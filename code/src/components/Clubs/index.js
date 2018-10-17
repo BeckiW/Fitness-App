@@ -1,7 +1,7 @@
 import React from "react"
 
 let URL = `https://api.www.svenskaspel.se/player/sponsorship/autocomplete?search=${query}&numResponses={integer}`
-let query =  ""
+let query = this.state.query
 
 class Clubs extends React.Component {
 
@@ -14,7 +14,7 @@ class Clubs extends React.Component {
       }
     }
 
-    onFilterTextChange = (evt) => {
+    handleInputChange = (evt) => {
     this.query = evt.target.value;
     this.forceUpdate();
   }
@@ -41,9 +41,14 @@ class Clubs extends React.Component {
     return (
       <div>
 
-      <input type="text" onChange={onFilterTextChange} />
-
-
+      <form>
+             <input
+               placeholder="Search for..."
+               ref={input => this.search = input}
+               onChange={this.handleInputChange}
+             />
+             <p>{this.state.query}</p>
+           </form>
 
       </div>
     )
