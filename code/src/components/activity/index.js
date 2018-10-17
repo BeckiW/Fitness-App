@@ -1,15 +1,14 @@
 import React from "react"
-import DayPicker from 'react-day-picker';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
+import DayPickerInput from 'react-day-picker/DayPickerInput'
 import 'react-day-picker/lib/style.css'
 
-const activity = ["swim", "run", "cycle", "hike", "tennis", "team"]
-const duration = ["30 mins", "1 hour", "2 hours", "4 hours", "8 hours"]
-
-let activityList = []
-let activityItem = {}
-
 class Activity extends React.Component {
+
+  activity = ["swim", "run", "cycle", "hike", "tennis", "team"]
+  duration = ["30 mins", "1 hour", "2 hours", "4 hours", "8 hours"]
+
+  activityList = []
+  activityItem = {}
 
   constructor(props) {
       super(props)
@@ -27,13 +26,13 @@ class Activity extends React.Component {
     }
 
     handleClick = () => {
-      activityItem = {
+      this.activityItem = {
         activity: this.state.selectedActivity,
         duration: this.state.selectedDuration,
         date: this.state.selectedDate
       }
-      activityList.push(activityItem)
-      console.log(activityList)
+      this.activityList.push(this.activityItem)
+      console.log(this.activityList)
     }
 
   render() {
@@ -42,7 +41,7 @@ class Activity extends React.Component {
 
         <p>Activity</p>
         <select onChange={event => this.setState({selectedActivity: event.target.value})}>
-          {activity.map((activity) => {
+          {this.activity.map((activity) => {
             return (<option key={activity} value={activity}>{activity}</option>
             )
           })}
@@ -50,7 +49,7 @@ class Activity extends React.Component {
 
         <p>Duration</p>
         <select onChange={event => this.setState({selectedDuration: event.target.value})}>
-          {duration.map((duration) => {
+          {this.duration.map((duration) => {
             return (<option key={duration} value={duration}>{duration}</option>
             )
           })}
