@@ -41,7 +41,7 @@ class Clubs extends React.Component {
     return (
       <div>
 
-      <input type="text" onChange={this.onFilterTextChange} /> 
+      <input type="text" onChange={onFilterTextChange} />
 
 
 
