@@ -1,4 +1,5 @@
 import React from "react"
+import List from "../list"
 import DayPickerInput from 'react-day-picker/DayPickerInput'
 import 'react-day-picker/lib/style.css'
 
@@ -33,6 +34,7 @@ class Activity extends React.Component {
       }
       this.activityList.push(this.activityItem)
       console.log(this.activityList)
+      this.props.callback(this.activityList)
     }
 
   render() {
