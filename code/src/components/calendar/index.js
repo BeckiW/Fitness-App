@@ -9,8 +9,7 @@ class Calendar extends React.Component {
   render(){
     return (
       <div>
-      Hello
-      {console.log(this.activityList)}
+      Hello - this is Calendar
       {this.props.data}
       </div>
     )

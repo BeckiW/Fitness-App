@@ -6,4 +6,4 @@ import Activity from "./components/activity"
 import Calendar from "./components/calendar"
 import "./index.css"
 
-ReactDOM.render(<Activity />, document.getElementById("root"))
+ReactDOM.render(<List />, document.getElementById("root"))
