@@ -23,7 +23,37 @@ class List extends React.Component {
     })
   }
 
+  fakeData = [
+    {
+      "selectedActivity": "swim",
+      "selectedDuration": "1 hour",
+      "selectedDate": new Date(2018, 9, 9)
+    },
+    {
+      "selectedActivity": "hike",
+      "selectedDuration": "5 hour",
+      "selectedDate": new Date(2018, 9, 12)
+    },
+    {
+      "selectedActivity": "swim",
+      "selectedDuration": "1 hour",
+      "selectedDate": new Date(2018, 9, 19)
+    },
+    {
+      "selectedActivity": "swim",
+      "selectedDuration": "1 hour",
+      "selectedDate": new Date(2018, 9, 27)
+    }
+  ]
+
+  swimArray = {fakeData.map((activity) => {
+      if(activity.selectedActivity === "swim") {
+        return activity.selectedDate
+      }
+    })}
+
   render() {
+    console.log(this.state.data.selectedDate)
     return(
       <div>
         <p>Parent</p>
