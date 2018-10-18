@@ -8,7 +8,9 @@ class Clubs extends React.Component {
       super(props)
       this.state = {
         clubs: [],
+        clubsToLoad: 20,
         query: ""
+
       }
     }
 
@@ -33,9 +35,14 @@ class Clubs extends React.Component {
         })
       }}
 
+      handleClickLoadMore = () => {
+        let clubsToLoad = this.state.clubsToLoad + 20
+        this.setState({
+            clubsToLoad
+          })
+     }
 
   queryChange = (evt) => {
-    //console.log("hell0")
    this.setState({query: evt.target.value})
  }
 
@@ -49,6 +56,16 @@ class Clubs extends React.Component {
       <input id="site-search" type="search" placeholder="Search for..." value={this.state.query} onChange={this.queryChange} />
       <input type="submit" value="Search" onClick={this.handleClick} />
            </form>
+
+           <ul>{this.state.clubs.map((club) => {
+             let result = club.name
+
+             return <li>{result.slice(0, this.state.clubsToLoad)}</li>})}   </ul>
+
+
+
+             <button onClick={this.handleClickLoadMore}> Load More Clubs </button>
+
       </div>
     )
   }
