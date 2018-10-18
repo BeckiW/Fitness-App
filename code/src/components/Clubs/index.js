@@ -1,4 +1,5 @@
 import React from "react"
+import ClubList from "../ClubList"
 
 
 
@@ -8,7 +9,7 @@ class Clubs extends React.Component {
       super(props)
       this.state = {
         clubs: [],
-        clubsToLoad: 20,
+        clubsToShow: 20,
         query: ""
 
       }
@@ -36,9 +37,9 @@ class Clubs extends React.Component {
       }}
 
       handleClickLoadMore = () => {
-        let clubsToLoad = this.state.clubsToLoad + 20
+        let newClubsToShow = this.state.clubsToShow + 20
         this.setState({
-            clubsToLoad
+            clubsToShow: newClubsToShow
           })
      }
 
@@ -49,6 +50,7 @@ class Clubs extends React.Component {
 
 
   render() {
+    let slicedClubs = this.state.clubs.slice(0, this.state.clubsToShow)
     return (
       <div>
 
@@ -57,12 +59,15 @@ class Clubs extends React.Component {
       <input type="submit" value="Search" onClick={this.handleClick} />
            </form>
 
-           <ul>{this.state.clubs.map((club) => {
-             let result = club.name
 
-             return <li>{result.slice(0, this.state.clubsToLoad)}</li>})}   </ul>
-
-
+           <ul>
+                   {slicedClubs.map(club => (
+                     <ClubList
+                       key={club.id}
+                       name={club.name}
+                       city={club.city} />
+                   ))}
+           </ul>
 
              <button onClick={this.handleClickLoadMore}> Load More Clubs </button>
 
