@@ -5,13 +5,6 @@ import 'react-day-picker/lib/style.css'
 
 class Calendar extends React.Component {
 
-
-
-  modifiers = {
-  swim: [new Date(2018, 9, 9), new Date(2018, 9, 21)],
-  hike: new Date(2018, 9, 17),
-  }
-
   modifiersStyles = {
     swim: {
       color: 'white',
@@ -26,8 +19,13 @@ class Calendar extends React.Component {
   render(){
     return (
       <div>
+      {this.props.swimData}
+      {this.props.data}
       <DayPicker
-        modifiers={this.modifiers}
+        modifiers={{
+          swim: [new Date(2018, 9, 9), new Date(2018, 9, 21)],
+          hike: this.props.swimData,
+        }}
         modifiersStyles={this.modifiersStyles}
       />
       </div>
