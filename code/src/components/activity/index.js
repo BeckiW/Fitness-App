@@ -1,5 +1,5 @@
 import React from "react"
-import List from "../list"
+import { Link } from 'react-router-dom'
 import DayPickerInput from 'react-day-picker/DayPickerInput'
 import 'react-day-picker/lib/style.css'
 
@@ -46,6 +46,8 @@ class Activity extends React.Component {
         <p>Date</p>
         <DayPickerInput onDayChange={day => this.addEntry(day)} />
         <button type="button" onClick={this.handleClick}>Add</button>
+
+        <Link to="/calendar">View your calendar</Link>
       </div>
     )
   }

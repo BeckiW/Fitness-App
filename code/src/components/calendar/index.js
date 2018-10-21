@@ -1,5 +1,5 @@
 import React from "react"
-import List from "../list"
+import { Link } from 'react-router-dom'
 import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 
@@ -31,6 +31,7 @@ class Calendar extends React.Component {
         } }
         modifiersStyles={this.modifiersStyles}
       />
+      <Link to="/activity">Add an activity</Link>
       </div>
     )
   }
