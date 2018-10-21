@@ -5,12 +5,14 @@ import 'react-day-picker/lib/style.css'
 
 class List extends React.Component {
 
-  activityList = ["swim", "run", "cycle", "hike", "tennis", "team"]
+  activityList = ["swim", "hike", "gym"]
   durationList = ["30 mins", "1 hour", "2 hours", "4 hours", "8 hours"]
 
   state = {
       data: [],
-      swimData: []
+      swimData: [],
+      hikeData: [],
+      gymData: []
   }
 
   addEntry = (selectedEntry) => {
@@ -18,17 +20,29 @@ class List extends React.Component {
     data.push(selectedEntry)
     this.setState({
       data
-    }, this.filterSwimData)
+    }, this.filterData)
   }
 
-  filterSwimData = () => {
+  filterData = () => {
     const swimData = this.state.data.filter((activity) => (
       activity.selectedActivity === "swim"
     )).map((activity) => (
       activity.selectedDate
     ))
+    const hikeData = this.state.data.filter((activity) => (
+      activity.selectedActivity === "hike"
+    )).map((activity) => (
+      activity.selectedDate
+    ))
+    const gymData = this.state.data.filter((activity) => (
+      activity.selectedActivity === "gym"
+    )).map((activity) => (
+      activity.selectedDate
+    ))
     this.setState({
-      swimData
+      swimData,
+      hikeData,
+      gymData
     })
   }
 
@@ -41,7 +55,12 @@ class List extends React.Component {
           durationList={this.durationList}
           onClick={this.addEntry}
         />
-        <Calendar data={this.state.data} swimData={this.state.swimData} />
+        <Calendar
+          data={this.state.data}
+          swimData={this.state.swimData}
+          hikeData={this.state.hikeData}
+          gymData={this.state.gymData}
+        />
       </div>
     )
   }

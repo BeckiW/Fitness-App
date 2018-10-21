@@ -1,5 +1,5 @@
 import React from "react"
-import List from "../list"
+import { Link } from 'react-router-dom'
 import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 
@@ -14,20 +14,24 @@ class Calendar extends React.Component {
       color: 'white',
       backgroundColor: 'pink',
     },
+    gym: {
+      color: 'white',
+      backgroundColor: 'lightblue',
+    }
   }
 
   render(){
     return (
       <div>
-      {this.props.swimData}
-      {this.props.data}
       <DayPicker
-        modifiers={{
-          swim: [new Date(2018, 9, 9), new Date(2018, 9, 21)],
-          hike: this.props.swimData,
-        }}
+        modifiers={ {
+          swim: (this.props.swimData.map((date) => { return new Date(date)})),
+          hike: (this.props.hikeData.map((date) => { return new Date(date)})),
+          gym: (this.props.gymData.map((date) => { return new Date(date)}))
+        } }
         modifiersStyles={this.modifiersStyles}
       />
+      <Link to="/activity">Add an activity</Link>
       </div>
     )
   }
