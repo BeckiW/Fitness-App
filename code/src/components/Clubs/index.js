@@ -63,7 +63,7 @@ class Clubs extends React.Component {
            <ul>
                    {slicedClubs.map(club => (
                      <ClubList
-                       key={club.id}
+                       id={club.id}
                        name={club.name}
                        city={club.city} />
                    ))}

@@ -13,10 +13,10 @@ class App extends React.Component {
       <Router>
 
       <Switch>
-          <Route exact path="/" component={ClubList} />
+          <Route exact path="/" component={Clubs} />
           <Route exact path="/activity" component={Activity}/>
           <Route exact path="/calender" component={Calendar}/>
-          <Route path="/list" component={ClubList}/>
+          <Route path="/list" component={Clubs}/>
         </Switch>
 
       </Router>
