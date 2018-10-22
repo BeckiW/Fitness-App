@@ -4,17 +4,21 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Calendar from './calendar'
 import ClubList from './ClubList'
 import Activity from "./activity"
+import Stats from "./stats"
 
 class App extends React.Component {
 
   activityList = ["swim", "hike", "gym"]
-  durationList = ["30 mins", "1 hour", "2 hours", "4 hours", "8 hours"]
+  durationList = [0.5, 1, 2, 4, 8]
 
   state = {
       data: [],
       swimData: [],
       hikeData: [],
-      gymData: []
+      gymData: [],
+      swimTime: [],
+      hikeTime: [],
+      gymTime: []
   }
 
   addEntry = (selectedEntry) => {
@@ -27,6 +31,7 @@ class App extends React.Component {
 
 
   filterData = () => {
+    // create array of dates for each activity
     const swimData = this.state.data.filter((activity) => (
       activity.selectedActivity === "swim"
     )).map((activity) => (
@@ -42,6 +47,44 @@ class App extends React.Component {
     )).map((activity) => (
       activity.selectedDate
     ))
+    // sum total hours on each activity
+    if (this.state.swimData.length > 0) {
+    const swimTime = this.state.data.filter((activity) => (
+      activity.selectedActivity === "swim"
+    )).map((activity) => (
+      parseFloat(activity.selectedDuration)
+    )).reduce((total, num) => {
+      return total + num
+    })
+    this.setState({
+      swimTime
+    })
+    }
+    if (this.state.hikeData.length > 0) {
+    const hikeTime = this.state.data.filter((activity) => (
+      activity.selectedActivity === "hike"
+    )).map((activity) => (
+      parseFloat(activity.selectedDuration)
+    )).reduce((total, num) => {
+      return total + num
+    })
+    this.setState({
+      hikeTime
+    })
+    }
+    if (this.state.gymData.length > 0) {
+    const gymTime = this.state.data.filter((activity) => (
+      activity.selectedActivity === "gym"
+    )).map((activity) => (
+      parseFloat(activity.selectedDuration)
+    )).reduce((total, num) => {
+      return total + num
+    })
+    this.setState({
+      gymTime
+    })
+    }
+    // put all data in state
     this.setState({
       swimData,
       hikeData,
@@ -72,6 +115,12 @@ class App extends React.Component {
                   hikeData={this.state.hikeData}
                   gymData={this.state.gymData} />}
                 />
+                <Route exact path="/stats"
+                  render={(props) => <Stats {...props}
+                    swimTime={this.state.swimTime}
+                    hikeTime={this.state.hikeTime}
+                    gymTime={this.state.gymTime} />}
+                  />
               <Route path="/list" component={ClubList}/>
             </Switch>
           </div>
