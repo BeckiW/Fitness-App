@@ -99,6 +99,8 @@ class App extends React.Component {
           <Link to="/activity">Add an activity</Link>
           <br />
           <Link to="/calendar">View your calendar</Link>
+          <br />
+          <Link to="/stats">View stats page</Link>
           <Switch>
               <Route exact path="/" component={Clubs} />
               <Route exact

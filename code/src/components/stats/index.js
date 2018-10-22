@@ -7,6 +7,7 @@ class Stats extends React.Component {
   render(){
     return (
       <div>
+      {this.props.swimTime}
         <Bubble
           swimTime={this.props.swimTime}
           hikeTime={this.props.hikeTime}

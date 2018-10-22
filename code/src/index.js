@@ -8,4 +8,4 @@ import Stream from "./components/stream"
 import Bubble from './components/Bubbles'
 import "./index.css"
 
-ReactDOM.render(<Stats />, document.getElementById("root"))
+ReactDOM.render(<App />, document.getElementById("root"))
