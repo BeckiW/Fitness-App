@@ -10,7 +10,7 @@ class Stats extends React.Component {
         <Bubble
           swimTime={this.props.swimTime}
           hikeTime={this.props.hikeTime}
-          gymTime={this.props.gymTime} />
+          gymTime={this.props.hikeTime} />
         <Stream
           swimTime={this.props.swimTime}
           hikeTime={this.props.hikeTime}
