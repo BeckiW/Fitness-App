@@ -3,7 +3,6 @@ import { ResponsiveStream } from '@nivo/stream'
 import { patternDotsDef } from '@nivo/core'
 import { generateCountriesData } from '@nivo/generators'
 import "./index.css"
-//import { colors } from '../../constants'
 
 const Stream = () => (
     <div className="stream-graph">
@@ -14,19 +13,45 @@ const Stream = () => (
                 bottom: 1.5,
                 left: 1.5,
             }}
-            data={generateCountriesData(
-                ['rock', 'jazz', 'hip-hop', 'reggae', 'folk', 'soul', 'funk'],
-                { size: 7 }
-            )}
-            keys={['rock', 'jazz', 'hip-hop', 'reggae', 'folk', 'soul', 'funk']}
+            data={[
+              {
+                "swim": 0,
+                "hike": 0,
+                "gym": 48,
+                "cycle": 14,
+                "run": 15
+              },
+              {
+                "swim": 0,
+                "hike": 164,
+                "gym": 0,
+                "cycle": 0,
+                "run": 25
+              },
+              {
+                "swim": 0,
+                "hike": 14,
+                "gym": 0,
+                "cycle": 0,
+                "run": 5
+              },
+              {
+                "swim": 26,
+                "hike": 0,
+                "gym": 23,
+                "cycle": 0,
+                "run": 35
+              }
+            ]}
+            keys={['swim', 'hike', 'gym', 'cycle', 'run']}
             offsetType="none"
-            colors={['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7', '#97a66f']}
+            colors={['#96ceb4', '#ffeead', '#ff6f69', '#ffcc5c', '#88d8b0']}
             enableGridX={false}
             enableGridY={false}
             axisBottom={null}
-            isInteractive={false}
+            isInteractive={true}
             animate={false}
-            borderWidth={3}
+            borderWidth={0}
             borderColor="#000000"
             defs={[patternDotsDef('pattern')]}
         />
