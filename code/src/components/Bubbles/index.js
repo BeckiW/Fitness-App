@@ -6,16 +6,16 @@ import './style.css'
 
 const colors = ['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7', '#97a66f']
 
-  const Bubble = () => (
+  const Bubble = (props) => (
       <div className = "containerBubble">
           <ResponsiveBubble
               root={{
                   data: 'root',
                   children: [{"name": "swim",
-                              "value": 50},
+                              "value": props.swimTime},
                               {"name": "hike",
-                              "value": 20}, {"name": "gym",
-                                                        "value": 20}]
+                              "value": props.hikeTime}, {"name": "gym",
+                                                        "value": props.gymTime}]
               }}
               identity="name"
               value="value"
