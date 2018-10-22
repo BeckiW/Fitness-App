@@ -3,13 +3,16 @@
   "version": "1.3.1",
   "private": true,
   "dependencies": {
+    "@nivo/circle-packing": "^0.50.0",
+    "@nivo/generators": "^0.50.0",
     "eslint-config-technigo": "^1.5.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
+    "nivo": "^0.31.0",
     "react": "^16.2.0",
     "react-day-picker": "^7.2.4",
     "react-dom": "^16.2.0",
-    "react-router-dom": "^4.3.1",
     "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.3"
   },
   "scripts": {

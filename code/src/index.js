@@ -4,6 +4,7 @@ import App from "./components/app"
 import List from "./components/list"
 import Activity from "./components/activity"
 import Calendar from "./components/calendar"
+import Bubble from './components/Bubbles'
 import "./index.css"
 
-ReactDOM.render(<App />, document.getElementById("root"))
+ReactDOM.render(<Bubble />, document.getElementById("root"))
