@@ -1,4 +1,5 @@
 import React from "react"
+import Bubble from '../Bubbles'
 
 class ClubList extends React.Component {
 
@@ -12,10 +13,13 @@ class ClubList extends React.Component {
 
   render() {
     return (
+      <div>
         <tr class="table">
         <td class="box"><a onClick={this.onClickHandler} style={{"cursor":"pointer"}}>{this.props.name}</a></td>
         <td>{this.props.city}</td>
         </tr>
+
+        </div>
     )
   }
 }

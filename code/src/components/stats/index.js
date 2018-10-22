@@ -1,6 +1,6 @@
 import React from "react"
-import Bubble from "./components/bubbles"
-import Stream from './components/stream'
+import Bubble from "../Bubbles"
+import Stream from '../stream'
 
 class Stats extends React.Component {
 
@@ -8,13 +8,13 @@ class Stats extends React.Component {
     return (
       <div>
         <Bubble
-          wimTime={this.state.swimTime}
-          hikeTime={this.state.hikeTime}
-          gymTime={this.state.gymTime} />
+          swimTime={this.props.swimTime}
+          hikeTime={this.props.hikeTime}
+          gymTime={this.props.gymTime} />
         <Stream
-          swimTime={this.state.swimTime}
-          hikeTime={this.state.hikeTime}
-          gymTime={this.state.gymTime} />
+          swimTime={this.props.swimTime}
+          hikeTime={this.props.hikeTime}
+          gymTime={this.props.gymTime} />
       </div>
     )
   }
