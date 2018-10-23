@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import Clubs from './Clubs'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Calendar from './calendar'
@@ -6,19 +7,40 @@ import ClubList from './ClubList'
 import Activity from "./activity"
 import Stats from "./stats"
 
+
 class App extends React.Component {
 
   activityList = ["swim", "hike", "gym"]
   durationList = [0.5, 1, 2, 4, 8]
 
   state = {
-      data: [],
+      data: [{
+        selectedActivity: "swim",
+        selectedDuration: "3",
+        selectedDate: "Wed Oct 17 2018 12:00:00 GMT+0200 (Central European Summer Time)"
+      }, {
+        selectedActivity: "swim",
+        selectedDuration: "3",
+        selectedDate: "Wed Oct 17 2018 12:00:00 GMT+0200 (Central European Summer Time)"
+      }, {
+        selectedActivity: "hike",
+        selectedDuration: "2",
+        selectedDate: "Tue Oct 16 2018 12:00:00 GMT+0200 (Central European Summer Time)"
+      }, {
+        selectedActivity: "gym",
+        selectedDuration: "1",
+        selectedDate: "Mon Oct 15 2018 12:00:00 GMT+0200 (Central European Summer Time)"
+      }],
       swimData: [],
       hikeData: [],
       gymData: [],
       swimTime: [],
       hikeTime: [],
       gymTime: []
+  }
+
+  componentDidMount() {
+    this.filterData()
   }
 
   addEntry = (selectedEntry) => {
@@ -31,6 +53,8 @@ class App extends React.Component {
 
 
   filterData = () => {
+    // Setup the arrays of dates
+
     // create array of dates for each activity
     const swimData = this.state.data.filter((activity) => (
       activity.selectedActivity === "swim"
@@ -47,49 +71,60 @@ class App extends React.Component {
     )).map((activity) => (
       activity.selectedDate
     ))
-    // sum total hours on each activity
-    if (this.state.swimData.length > 0) {
-    const swimTime = this.state.data.filter((activity) => (
-      activity.selectedActivity === "swim"
-    )).map((activity) => (
-      parseFloat(activity.selectedDuration)
-    )).reduce((total, num) => {
-      return total + num
-    })
-    this.setState({
-      swimTime
-    })
-    }
-    if (this.state.hikeData.length > 0) {
-    const hikeTime = this.state.data.filter((activity) => (
-      activity.selectedActivity === "hike"
-    )).map((activity) => (
-      parseFloat(activity.selectedDuration)
-    )).reduce((total, num) => {
-      return total + num
-    })
-    this.setState({
-      hikeTime
-    })
-    }
-    if (this.state.gymData.length > 0) {
-    const gymTime = this.state.data.filter((activity) => (
-      activity.selectedActivity === "gym"
-    )).map((activity) => (
-      parseFloat(activity.selectedDuration)
-    )).reduce((total, num) => {
-      return total + num
-    })
-    this.setState({
-      gymTime
-    })
-    }
     // put all data in state
     this.setState({
       swimData,
       hikeData,
       gymData
     })
+
+    // Setup arrays of activity times
+
+    this.activityList.forEach((activityType) => {
+      let totalTime = 0;
+
+      this.state.data.forEach((activity) => {
+        if (activity.selectedActivity === activityType) {
+          totalTime += parseFloat(activity.selectedDuration);
+        }
+      })
+
+      let stateEntry = activityType + "Time";
+
+      this.setState({
+        [stateEntry]: totalTime
+      })
+    })
+
+    // Setup Stream data
+    let streamData = []
+
+    for(let daysAgo = 30; daysAgo >= 0; --daysAgo) {
+      let loopDate = moment().subtract('days', daysAgo)
+
+      let entry = {
+        "date": loopDate,
+        "swim": 0,
+        "hike": 0,
+        "gym": 0
+      }
+
+      let dayActivities = this.state.data.filter((activity) => {
+        let activityDate = moment(activity.selectedDate)
+        return activityDate.isSame(loopDate, 'day');
+      })
+
+      dayActivities.forEach((activity) => {
+        entry[activity.selectedActivity] += parseFloat(activity.selectedDuration);
+      })
+
+      streamData.push(entry)
+    }
+
+    this.setState({
+      streamData
+    })
+    console.log(streamData);
   }
 
   render() {
