@@ -37,6 +37,15 @@ class Clubs extends React.Component {
         })
       }}
 
+      onChangeClubHandler = (evt) => {
+        if (localStorage === "") {
+          localStorage.setItem("Club id", this.props.name);
+        } else {
+          localStorage.removeItem("Club id")
+          localStorage.setItem("Club id", this.props.name);
+        }
+      }
+
       handleClickLoadMore = () => {
         let newClubsToShow = this.state.clubsToShow + 20
         this.setState({
