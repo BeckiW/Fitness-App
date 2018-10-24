@@ -100,6 +100,7 @@ class App extends React.Component {
         return (days.swim > 0 || days.gym > 0 || days.hike > 0 )
       })
       calenderActivity.forEach((days) => {
+
         if(days.swim > 0 && days.hike == 0 && days.gym == 0) {
            entry["date"] = days.date
            entry["value"] = 100
@@ -113,8 +114,9 @@ class App extends React.Component {
           entry["date"] = days.date
           entry["value"] = 400
         }
+        calenderData.push(entry)
       })
-      calenderData.push(entry)
+
       this.setState({
         calenderData
       })
@@ -126,7 +128,6 @@ class App extends React.Component {
       this.addCalendarData()
     }
   }
-
 
   render() {
     return (
