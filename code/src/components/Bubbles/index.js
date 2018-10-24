@@ -4,7 +4,6 @@ import Stats from '../stats'
 import { generateCountriesData } from '@nivo/generators'
 import './style.css'
 
-const colors = ['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7', '#97a66f']
 
   const Bubble = (props) => (
       <div className = "containerBubble">
@@ -20,8 +19,9 @@ const colors = ['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7'
               identity="name"
               value="value"
               leavesOnly={true}
-              colors={['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7', '#97a66f']}
+              colors={['#901dd2', '#5493ff', '#37c670']}
               labelTextColor="#000"
+              labelTextFont=''
               labelSkipRadius={12}
               colorBy="name"
               borderWidth={0}
