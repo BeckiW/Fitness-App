@@ -12,22 +12,23 @@ const durationList = [0.5, 1, 2, 4, 8];
 
 
 class App extends React.Component {
-state = {
-      data: localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data")) : [],
-      swimData: [],
-      hikeData: [],
-      gymData: [],
-      swimTime: [],
-      hikeTime: [],
-      gymTime: []
-  }
+
+  state = {
+        data: localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data")) : [],
+        swimData: [],
+        hikeData: [],
+        gymData: [],
+        swimTime: [],
+        hikeTime: [],
+        gymTime: [],
+        streamData: [],
+        calenderData: []
+    }
 
   componentDidMount() {
-    //console.log(this.state.data)
-    this.filterData()
-    // this.setState({
-    //   data: JSON.parse(localStorage.getItem("data"))
-    // })
+    this.addBubbleData()
+    this.addStreamData()
+    this.addCalendarData()
   }
 
   addEntry = (selectedEntry) => {
@@ -36,58 +37,31 @@ state = {
       data.push(selectedEntry)
       this.setState({
         data
-      }, () => this.filterData())
+      }, () => this.componentDidMount())
       localStorage.setItem("data", JSON.stringify(data))
     }
   }
 
-
-  filterData = () => {
-    // Setup the arrays of dates
-    //
-    // // create array of dates for each activity
-    // const swimData = this.state.data.filter((activity) => (
-    //   activity.selectedActivity === "swim"
-    // )).map((activity) => (
-    //   activity.selectedDate
-    // ))
-    // const hikeData = this.state.data.filter((activity) => (
-    //   activity.selectedActivity === "hike"
-    // )).map((activity) => (
-    //   activity.selectedDate
-    // ))
-    // const gymData = this.state.data.filter((activity) => (
-    //   activity.selectedActivity === "gym"
-    // )).map((activity) => (
-    //   activity.selectedDate
-    // ))
-    // // put all data in state
-    // this.setState({
-    //   swimData,
-    //   hikeData,
-    //   gymData
-    // })
-
-    // Setup arrays of activity times
+  // Setup arrays of activity times
+  addBubbleData = () => {
     activityList.forEach((activityType) => {
       let totalTime = 0;
-
       if (this.state.data !== null) {
         this.state.data.forEach((activity) => {
           if (activity.selectedActivity === activityType) {
             totalTime += parseFloat(activity.selectedDuration);
           }
         })
-
         let stateEntry = activityType + "Time";
-
         this.setState({
           [stateEntry]: totalTime
         })
       }
-      })
+    })
+  }
 
-    // Setup Stream data
+  // setup stream data
+  addStreamData = () => {
     let streamData = []
     if (this.state.data !== null) {
     for(let daysAgo = 30; daysAgo >= 0; --daysAgo) {
@@ -98,7 +72,6 @@ state = {
         "hike": 0,
         "gym": 0
       }
-
       let dayActivities = this.state.data.filter((activity) => {
         let activityDate = moment(activity.selectedDate)
         return activityDate.isSame(loopDate, 'day');
@@ -108,23 +81,24 @@ state = {
       })
       streamData.push(entry)
     }
-
     this.setState({
       streamData
     })
     console.log('streamData ' + streamData);
     }
+  }
 
+  // setup calendardata
+  addCalendarData = () => {
     let calenderData = []
     if (this.state.data !== null) {
       let entry = {
         "date": null,
         "value": 0
       }
-      let calenderActivity = streamData.filter(days => {
+      let calenderActivity = this.state.streamData.filter(days => {
         return (days.swim > 0 || days.gym > 0 || days.hike > 0 )
       })
-
       calenderActivity.forEach((days) => {
         if(days.swim > 0 && days.hike == 0 && days.gym == 0) {
            entry["date"] = days.date
@@ -140,17 +114,12 @@ state = {
           entry["value"] = 400
         }
       })
-
       calenderData.push(entry)
+      this.setState({
+        calenderData
+      })
     }
-    this.setState({
-      calenderData
-
-    })
-
-
   }
-
 
 
   render() {
