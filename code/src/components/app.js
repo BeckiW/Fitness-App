@@ -139,15 +139,7 @@ class App extends React.Component {
                   durationList={durationList}
                   onClick={this.addEntry} />}
               />
-<<<<<<< HEAD
 
-=======
-              <Route exact path="/calendar"
-                render={(props) => <Calendar {...props}
-                  data={this.state.data}
-                  streamData={this.state.streamData} />}
-                />
->>>>>>> 9bdd03d2ea14239ab222cfa6a1aef188d0270da0
                 <Route exact path="/stats"
                   render={(props) => <Stats {...props}
                     swimTime={this.state.swimTime}
