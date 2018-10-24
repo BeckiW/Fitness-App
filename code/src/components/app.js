@@ -125,11 +125,6 @@ class App extends React.Component {
     return (
         <Router>
         <div>
-          <Link to="/">Change your club</Link>
-          <br />
-          <Link to="/activity">Add an activity</Link>
-          <br />
-          <Link to="/stats">View stats page</Link>
           <Switch>
               <Route exact path="/" component={Clubs} />
               <Route exact
@@ -139,7 +134,6 @@ class App extends React.Component {
                   durationList={durationList}
                   onClick={this.addEntry} />}
               />
-
                 <Route exact path="/stats"
                   render={(props) => <Stats {...props}
                     swimTime={this.state.swimTime}

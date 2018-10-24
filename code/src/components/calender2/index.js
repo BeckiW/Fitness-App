@@ -7,12 +7,9 @@ import './style.css'
 const colors = ['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7', '#97a66f']
 
   const Calender = (props) => (
-      <div className = "containerCalender">
 
-  // make sure parent container have a defined height when using responsive component,
-  // otherwise height will be 0 and no chart will be rendered.
-  // website examples showcase many properties, you'll often use just a few of them.
-  render((
+    <div className = "containerCalender">
+
       <ResponsiveCalendar
           data={
             [

@@ -2,11 +2,10 @@ import React from 'react'
 import { ResponsiveBubble } from '@nivo/circle-packing'
 import Stats from '../stats'
 import { generateCountriesData } from '@nivo/generators'
-import './style.css'
 
 
   const Bubble = (props) => (
-      <div className = "containerBubble">
+      <div className="graphBox">
           <ResponsiveBubble
               root={{
                   data: 'root',

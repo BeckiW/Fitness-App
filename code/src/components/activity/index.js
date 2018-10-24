@@ -1,4 +1,5 @@
 import React from "react"
+import Calender from '../calender2'
 import { Link } from 'react-router-dom'
 import DayPickerInput from 'react-day-picker/DayPickerInput'
 import 'react-day-picker/lib/style.css'
@@ -24,9 +25,18 @@ class Activity extends React.Component {
       this.props.onClick(this.state)
     }
 
+    club = localStorage.getItem("Club id")
+
   render() {
     return (
       <div>
+        <div className="navigation">
+          <Link to="/"><i class="fas fa-arrow-left"></i> Change your club</Link>
+          <br />
+          <Link to="/stats">View stats page <i class="fas fa-arrow-right"></i></Link>
+        </div>
+        <h2>{this.club}</h2>
+        <h1>Add a new activity</h1>
         <p>Activity</p>
         <select onChange={event => this.setState({selectedActivity: event.target.value})}>
           <option>Choose an activity</option>
@@ -48,6 +58,11 @@ class Activity extends React.Component {
         <p>Date</p>
         <DayPickerInput onDayChange={day => this.addEntry(day)} />
         <button type="button" onClick={this.handleClick}>Add</button>
+
+        <Calender
+          swimTime={this.props.swimTime}
+          hikeTime={this.props.hikeTime}
+          gymTime={this.props.gymTime} />
       </div>
     )
   }
