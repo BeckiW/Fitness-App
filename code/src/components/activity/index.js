@@ -59,10 +59,7 @@ class Activity extends React.Component {
         <DayPickerInput onDayChange={day => this.addEntry(day)} />
         <button type="button" onClick={this.handleClick}>Add</button>
 
-        <Calender
-          swimTime={this.props.swimTime}
-          hikeTime={this.props.hikeTime}
-          gymTime={this.props.gymTime} />
+        <Calender calendarData={this.props.calendarData} />
       </div>
     )
   }

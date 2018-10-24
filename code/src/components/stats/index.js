@@ -4,7 +4,6 @@ import Bubble from "../Bubbles"
 import Stream from '../stream'
 
 
-
 class Stats extends React.Component {
 
   club  = localStorage.getItem("Club id")

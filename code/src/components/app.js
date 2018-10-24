@@ -13,18 +13,22 @@ const durationList = [0.5, 1, 2, 4, 8];
 class App extends React.Component {
 
   state = {
-        data: localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data")) : [],
-        swimData: [],
-        hikeData: [],
-        gymData: [],
-        swimTime: [],
-        hikeTime: [],
-        gymTime: [],
-        streamData: [],
-        calenderData: []
-    }
+    data: localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data")) : [],
+    swimData: [],
+    hikeData: [],
+    gymData: [],
+    swimTime: [],
+    hikeTime: [],
+    gymTime: [],
+    streamData: [],
+    calendarData: []
+  }
 
   componentDidMount() {
+    this.updateData();
+  }
+
+  updateData() {
     this.addBubbleData()
     this.addStreamData()
     this.addCalendarData()
@@ -36,7 +40,7 @@ class App extends React.Component {
       data.push(selectedEntry)
       this.setState({
         data
-      }, () => this.componentDidMount())
+      }, () => this.updateData())
       localStorage.setItem("data", JSON.stringify(data))
     }
   }
@@ -89,45 +93,64 @@ class App extends React.Component {
 
   // setup calendardata
   addCalendarData = () => {
-    let calenderData = []
-    if (this.state.streamData.length > 0) {
-      let entry = {
-        "date": null,
-        "value": 0
+    let activitiesByDay = {}
+
+    // Go over all activities and figure out how many hours of each activity occured each day
+    this.state.data.forEach((activity) => {
+      let day = moment(activity.selectedDate).format("YYYY-MM-DD");
+      let activityType = activity.selectedActivity;
+
+      if (activitiesByDay[day] === undefined) {
+        activitiesByDay[day] = {
+          "swim": 0,
+          "hike": 0,
+          "gym": 0,
+          "total": 0
+        }
       }
 
-      let calenderActivity = this.state.streamData.filter(days => {
-        return (days.swim > 0 || days.gym > 0 || days.hike > 0 )
-      })
-      calenderActivity.forEach((days) => {
+      activitiesByDay[day][activityType] += parseFloat(activity.selectedDuration);
+      activitiesByDay[day]["total"] += parseFloat(activity.selectedDuration);
+    })
 
-        if(days.swim > 0 && days.hike == 0 && days.gym == 0) {
-           entry["date"] = days.date
-           entry["value"] = 100
-        } else if(days.hike > 0 && days.swim == 0 && days.gym == 0) {
-          entry["date"] = days.date
-          entry["value"] = 200
-        } else if(days.gym > 0 && days.hike == 0 && days.swim == 0) {
-          entry["date"] = days.date
-          entry["value"] = 300
-        } else {
-          entry["date"] = days.date
-          entry["value"] = 400
-        }
-        calenderData.push(entry)
-      })
+    console.log(activitiesByDay)
 
-      this.setState({
-        calenderData
-      })
-    }
+    // Go over all of the dates and figure out the colour of that square
+    let calendarData = []
+    let days = Object.keys(activitiesByDay)
+
+    days.forEach((day) => {
+      let dayData = activitiesByDay[day]
+      let value = 0;
+
+      if ((dayData.swim > 0) && (dayData.swim == dayData.total)) {
+        value = 100;
+      } else if ((dayData.hike > 0) && (dayData.hike == dayData.total)) {
+        value = 200;
+      } else if ((dayData.gym > 0) && (dayData.gym == dayData.total)) {
+        value = 300;
+      } else {
+        value = 400;
+      }
+
+      let entry = {
+        day: day,
+        value: value
+      }
+
+      calendarData.push(entry);
+    })
+
+    this.setState({
+      calendarData
+    })
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.streamData !== this.state.streamData) {
-      this.addCalendarData()
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.streamData !== this.state.streamData) {
+  //     this.addCalendarData()
+  //   }
+  // }
 
   render() {
     return (
@@ -140,14 +163,17 @@ class App extends React.Component {
                 render={(props) => <Activity {...props}
                   activityList={activityList}
                   durationList={durationList}
-                  onClick={this.addEntry} />}
+                  calendarData={this.state.calendarData}
+                  onClick={this.addEntry}
+                  />}
               />
                 <Route exact path="/stats"
                   render={(props) => <Stats {...props}
                     swimTime={this.state.swimTime}
                     hikeTime={this.state.hikeTime}
                     gymTime={this.state.gymTime}
-                    streamData={this.state.streamData} />}
+                    streamData={this.state.streamData}
+                    />}
                   />
               <Route path="/list" component={ClubList}/>
             </Switch>

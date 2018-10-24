@@ -1,4 +1,5 @@
-.containerCalender {
-height: 600px;
+.calendarContainer {
+  margin-top: 20px;
+  height: 120px
 
 }
