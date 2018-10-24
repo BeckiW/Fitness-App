@@ -90,11 +90,12 @@ class App extends React.Component {
   // setup calendardata
   addCalendarData = () => {
     let calenderData = []
-    if (this.state.data !== null) {
+    if (this.state.streamData.length > 0) {
       let entry = {
         "date": null,
         "value": 0
       }
+
       let calenderActivity = this.state.streamData.filter(days => {
         return (days.swim > 0 || days.gym > 0 || days.hike > 0 )
       })
@@ -117,6 +118,12 @@ class App extends React.Component {
       this.setState({
         calenderData
       })
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.streamData !== this.state.streamData) {
+      this.addCalendarData()
     }
   }
 
