@@ -1,5 +1,6 @@
 import React from "react"
 import ClubList from "../ClubList"
+import { Link } from 'react-router-dom'
 
 
 
@@ -53,7 +54,12 @@ class Clubs extends React.Component {
     let slicedClubs = this.state.clubs.slice(0, this.state.clubsToShow)
     return (
       <div>
-
+        <div className="navigation">
+          <Link to="/activity"><i class="fas fa-arrow-left"></i> Add an activity</Link>
+          <br />
+          <Link to="/stats">View stats page <i class="fas fa-arrow-right"></i></Link>
+        </div>
+        <h1>Choose your Club</h1>
       <form>
       <input id="site-search" type="search" placeholder="Search for..." value={this.state.query} onChange={this.queryChange} />
       <input type="submit" value="Search" onClick={this.handleClick} />
@@ -70,7 +76,6 @@ class Clubs extends React.Component {
            </ul>
 
              <button onClick={this.handleClickLoadMore}> Load More Clubs </button>
-
       </div>
     )
   }

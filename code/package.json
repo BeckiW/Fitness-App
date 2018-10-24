@@ -10,6 +10,7 @@
     "@nivo/stream": "^0.50.0",
     "eslint-config-technigo": "^1.5.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
+    "node-sass": "^4.9.3",
     "moment": "^2.22.2",
     "nivo": "^0.31.0",
     "react": "^16.2.0",

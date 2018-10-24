@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+body {
+  margin: 20px auto;
+  width: 50%;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.navigation {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 40px 0px;
+  font-size: 20px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+h1 {
+  font-size: 30px;
+  border-bottom: 4px solid #ff6f69;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.graphBox {
+  height: 400px;
+}

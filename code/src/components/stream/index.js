@@ -2,10 +2,9 @@ import React from 'react'
 import { ResponsiveStream } from '@nivo/stream'
 import { patternDotsDef } from '@nivo/core'
 import { generateCountriesData } from '@nivo/generators'
-import "./index.css"
 
 const Stream = (props) => (
-    <div className="stream-graph">
+    <div className="graphBox">
         <ResponsiveStream
             margin={{
                 top: 10,
