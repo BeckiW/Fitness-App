@@ -14,23 +14,7 @@ class App extends React.Component {
   durationList = [0.5, 1, 2, 4, 8]
 
   state = {
-      data: [{
-        selectedActivity: "swim",
-        selectedDuration: "3",
-        selectedDate: "Wed Oct 17 2018 12:00:00 GMT+0200 (Central European Summer Time)"
-      }, {
-        selectedActivity: "swim",
-        selectedDuration: "3",
-        selectedDate: "Wed Oct 17 2018 12:00:00 GMT+0200 (Central European Summer Time)"
-      }, {
-        selectedActivity: "hike",
-        selectedDuration: "2",
-        selectedDate: "Tue Oct 16 2018 12:00:00 GMT+0200 (Central European Summer Time)"
-      }, {
-        selectedActivity: "gym",
-        selectedDuration: "1",
-        selectedDate: "Mon Oct 15 2018 12:00:00 GMT+0200 (Central European Summer Time)"
-      }],
+      data: JSON.parse(localStorage.getItem("data")),
       swimData: [],
       hikeData: [],
       gymData: [],
@@ -40,6 +24,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.state.data)
     this.filterData()
   }
 
@@ -49,6 +34,7 @@ class App extends React.Component {
     this.setState({
       data
     }, this.filterData)
+    localStorage.setItem("data", JSON.stringify(data))
   }
 
 
