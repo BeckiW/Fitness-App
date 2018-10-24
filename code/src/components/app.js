@@ -126,9 +126,9 @@ class App extends React.Component {
     return (
         <Router>
         <div>
-          <Link to="/activity">Add an activity</Link>
+          <Link to="/">Change your club</Link>
           <br />
-          <Link to="/calendar">View your calendar</Link>
+          <Link to="/activity">Add an activity</Link>
           <br />
           <Link to="/stats">View stats page</Link>
           <Switch>
@@ -142,8 +142,8 @@ class App extends React.Component {
               />
               <Route exact path="/calendar"
                 render={(props) => <Calendar {...props}
-                data={this.state.data}
-                streamData={this.state.streamData} />}
+                  data={this.state.data}
+                  streamData={this.state.streamData} />}
                 />
                 <Route exact path="/stats"
                   render={(props) => <Stats {...props}

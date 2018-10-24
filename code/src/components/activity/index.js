@@ -29,6 +29,7 @@ class Activity extends React.Component {
       <div>
         <p>Activity</p>
         <select onChange={event => this.setState({selectedActivity: event.target.value})}>
+          <option>Choose an activity</option>
           {this.props.activityList.map((activity) => {
             return (<option key={activity} value={activity}>{activity}</option>
             )
@@ -37,6 +38,7 @@ class Activity extends React.Component {
 
         <p>Duration</p>
         <select onChange={event => this.setState({selectedDuration: event.target.value})}>
+          <option>Choose a duration</option>
           {this.props.durationList.map((duration) => {
             return (<option key={duration} value={duration}>{duration}</option>
             )
@@ -46,8 +48,6 @@ class Activity extends React.Component {
         <p>Date</p>
         <DayPickerInput onDayChange={day => this.addEntry(day)} />
         <button type="button" onClick={this.handleClick}>Add</button>
-
-        <Link to="/calendar">View your calendar</Link>
       </div>
     )
   }
