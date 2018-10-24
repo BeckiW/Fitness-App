@@ -2,7 +2,6 @@ import React from 'react'
 import moment from 'moment'
 import Clubs from './Clubs'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import Calendar from './calendar'
 import ClubList from './ClubList'
 import Activity from "./activity"
 import Stats from "./stats"
@@ -140,11 +139,7 @@ class App extends React.Component {
                   durationList={durationList}
                   onClick={this.addEntry} />}
               />
-              <Route exact path="/calendar"
-                render={(props) => <Calendar {...props}
-                data={this.state.data}
-                streamData={this.state.streamData} />}
-                />
+
                 <Route exact path="/stats"
                   render={(props) => <Stats {...props}
                     swimTime={this.state.swimTime}

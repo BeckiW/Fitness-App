@@ -3,11 +3,22 @@ import Bubble from "../Bubbles"
 import Stream from '../stream'
 import Calender from '../calender2'
 
+
+
 class Stats extends React.Component {
 
+  club  = localStorage.getItem("Club id")
+
+
+
   render(){
+
+console.log(this.club)
     return (
       <div>
+
+      <h1>You are playing for {this.club}</h1>
+
       {this.props.swimTime}
         <Bubble
           swimTime={this.props.swimTime}

@@ -8,7 +8,8 @@ class ClubList extends React.Component {
   }
 
   onClickHandler = (evt) => {
-    alert(this.props.id);
+    localStorage.setItem("Club id", this.props.name);
+    alert(this.props.name);
   }
 
   render() {
