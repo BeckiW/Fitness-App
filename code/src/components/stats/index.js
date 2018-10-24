@@ -21,8 +21,8 @@ console.log(this.club)
           <br />
           <Link to="/activity">Add a new activity <i class="fas fa-arrow-right"></i></Link>
         </div>
+        <h2>{this.club}</h2>
         <h1>Your exercise stats</h1>
-        <h1>You are playing for {this.club}</h1>
         <Bubble
           swimTime={this.props.swimTime}
           hikeTime={this.props.hikeTime}

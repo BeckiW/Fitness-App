@@ -25,6 +25,8 @@ class Activity extends React.Component {
       this.props.onClick(this.state)
     }
 
+    club = localStorage.getItem("Club id")
+
   render() {
     return (
       <div>
@@ -33,6 +35,7 @@ class Activity extends React.Component {
           <br />
           <Link to="/stats">View stats page <i class="fas fa-arrow-right"></i></Link>
         </div>
+        <h2>{this.club}</h2>
         <h1>Add a new activity</h1>
         <p>Activity</p>
         <select onChange={event => this.setState({selectedActivity: event.target.value})}>
