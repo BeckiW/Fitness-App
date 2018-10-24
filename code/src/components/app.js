@@ -125,9 +125,9 @@ class App extends React.Component {
     return (
         <Router>
         <div>
-          <Link to="/activity">Add an activity</Link>
+          <Link to="/">Change your club</Link>
           <br />
-          <Link to="/calendar">View your calendar</Link>
+          <Link to="/activity">Add an activity</Link>
           <br />
           <Link to="/stats">View stats page</Link>
           <Switch>
@@ -139,7 +139,15 @@ class App extends React.Component {
                   durationList={durationList}
                   onClick={this.addEntry} />}
               />
+<<<<<<< HEAD
 
+=======
+              <Route exact path="/calendar"
+                render={(props) => <Calendar {...props}
+                  data={this.state.data}
+                  streamData={this.state.streamData} />}
+                />
+>>>>>>> 9bdd03d2ea14239ab222cfa6a1aef188d0270da0
                 <Route exact path="/stats"
                   render={(props) => <Stats {...props}
                     swimTime={this.state.swimTime}
