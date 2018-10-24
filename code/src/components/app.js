@@ -142,14 +142,15 @@ class App extends React.Component {
               />
               <Route exact path="/calendar"
                 render={(props) => <Calendar {...props}
-                  data={this.state.data}
-                  streamData={this.state.streamData} />}
+                data={this.state.data}
+                streamData={this.state.streamData} />}
                 />
                 <Route exact path="/stats"
                   render={(props) => <Stats {...props}
                     swimTime={this.state.swimTime}
                     hikeTime={this.state.hikeTime}
-                    gymTime={this.state.gymTime} />}
+                    gymTime={this.state.gymTime}
+                    streamData={this.state.streamData} />}
                   />
               <Route path="/list" component={ClubList}/>
             </Switch>

@@ -14,10 +14,7 @@ class Stats extends React.Component {
           hikeTime={this.props.hikeTime}
           gymTime={this.props.hikeTime} />
         <Stream
-          swimTime={this.props.swimTime}
-          hikeTime={this.props.hikeTime}
-          gymTime={this.props.gymTime} />
-
+          streamData={this.props.streamData} />
         <Calender
         swimTime={this.props.swimTime}
         hikeTime={this.props.hikeTime}
