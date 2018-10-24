@@ -7,14 +7,13 @@ import ClubList from './ClubList'
 import Activity from "./activity"
 import Stats from "./stats"
 
+const activityList = ["swim", "hike", "gym"];
+const durationList = [0.5, 1, 2, 4, 8];
+
 
 class App extends React.Component {
-
-  activityList = ["swim", "hike", "gym"]
-  durationList = [0.5, 1, 2, 4, 8]
-
-  state = {
-      data: [],
+state = {
+      data: localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data")) : [],
       swimData: [],
       hikeData: [],
       gymData: [],
@@ -24,11 +23,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state.data)
+    //console.log(this.state.data)
     this.filterData()
-    this.setState({
-      data: JSON.parse(localStorage.getItem("data"))
-    })
+    // this.setState({
+    //   data: JSON.parse(localStorage.getItem("data"))
+    // })
   }
 
   addEntry = (selectedEntry) => {
@@ -37,7 +36,7 @@ class App extends React.Component {
       data.push(selectedEntry)
       this.setState({
         data
-      }, this.filterData)
+      }, () => this.filterData())
       localStorage.setItem("data", JSON.stringify(data))
     }
   }
@@ -70,7 +69,7 @@ class App extends React.Component {
     // })
 
     // Setup arrays of activity times
-    this.activityList.forEach((activityType) => {
+    activityList.forEach((activityType) => {
       let totalTime = 0;
 
       if (this.state.data !== null) {
@@ -99,6 +98,7 @@ class App extends React.Component {
         "hike": 0,
         "gym": 0
       }
+
       let dayActivities = this.state.data.filter((activity) => {
         let activityDate = moment(activity.selectedDate)
         return activityDate.isSame(loopDate, 'day');
@@ -112,9 +112,46 @@ class App extends React.Component {
     this.setState({
       streamData
     })
-    console.log(streamData);
+    console.log('streamData ' + streamData);
     }
+
+    let calenderData = []
+    if (this.state.data !== null) {
+      let entry = {
+        "date": null,
+        "value": 0
+      }
+      let calenderActivity = streamData.filter(days => {
+        return (days.swim > 0 || days.gym > 0 || days.hike > 0 )
+      })
+
+      calenderActivity.forEach((days) => {
+        if(days.swim > 0 && days.hike == 0 && days.gym == 0) {
+           entry["date"] = days.date
+           entry["value"] = 100
+        } else if(days.hike > 0 && days.swim == 0 && days.gym == 0) {
+          entry["date"] = days.date
+          entry["value"] = 200
+        } else if(days.gym > 0 && days.hike == 0 && days.swim == 0) {
+          entry["date"] = days.date
+          entry["value"] = 300
+        } else {
+          entry["date"] = days.date
+          entry["value"] = 400
+        }
+      })
+
+      calenderData.push(entry)
+    }
+    this.setState({
+      calenderData
+
+    })
+
+
   }
+
+
 
   render() {
     return (
@@ -130,16 +167,14 @@ class App extends React.Component {
               <Route exact
                 path="/activity"
                 render={(props) => <Activity {...props}
-                  activityList={this.activityList}
-                  durationList={this.durationList}
+                  activityList={activityList}
+                  durationList={durationList}
                   onClick={this.addEntry} />}
               />
               <Route exact path="/calendar"
                 render={(props) => <Calendar {...props}
                   data={this.state.data}
-                  swimData={this.state.swimData}
-                  hikeData={this.state.hikeData}
-                  gymData={this.state.gymData} />}
+                  streamData={this.state.streamData} />}
                 />
                 <Route exact path="/stats"
                   render={(props) => <Stats {...props}
