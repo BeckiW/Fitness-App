@@ -4,6 +4,7 @@ import Clubs from './Clubs'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import ClubList from './ClubList'
 import Activity from "./activity"
+import Badges from './badges'
 import Stats from "./stats"
 
 const activityList = ["swim", "hike", "gym", "run", "cycle", "other"];
@@ -193,7 +194,11 @@ class App extends React.Component {
                     streamData={this.state.streamData}
                     />}
                   />
-              <Route path="/list" component={ClubList}/>
+              <Route path="/badges"
+                render={(props) => <Badges {...props}
+                  //pointsData={this.state.pointsData}
+                  />}
+                />
             </Switch>
           </div>
         </Router>

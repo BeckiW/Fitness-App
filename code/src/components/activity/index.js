@@ -33,7 +33,11 @@ class Activity extends React.Component {
         <div className="navigation">
           <Link to="/"><i class="fas fa-arrow-left"></i> Change your club</Link>
           <br />
-          <Link to="/stats">View stats page <i class="fas fa-arrow-right"></i></Link>
+          <div className="vertical-navigation">
+            <Link to="/stats">View stats page <i class="fas fa-arrow-right"></i></Link>
+            <br />
+            <Link to="/badges">View your points <i class="fas fa-arrow-right"></i></Link>
+          </div>
         </div>
         <h2>{this.club}</h2>
         <h1>Add a new activity</h1>
