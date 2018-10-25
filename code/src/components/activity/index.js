@@ -39,7 +39,7 @@ class Activity extends React.Component {
             <Link to="/badges">View your badges <i class="fas fa-arrow-right"></i></Link>
           </div>
         </div>
-        <h2>{this.club}</h2>
+        <h2>You are playing for {this.club}</h2>
         <h1>Add a new activity</h1>
         <p>Activity</p>
         <select onChange={event => this.setState({selectedActivity: event.target.value})}>
