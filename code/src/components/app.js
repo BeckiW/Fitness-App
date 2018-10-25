@@ -175,7 +175,7 @@ class App extends React.Component {
     this.setState({
       pointsData: (totalHours * 10)
     })
-}
+  }
 
   render() {
     return (

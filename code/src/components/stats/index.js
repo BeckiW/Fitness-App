@@ -21,7 +21,7 @@ class Stats extends React.Component {
           </div>
         </div>
         <h2>{this.club}</h2>
-        <h1>Your exercise stats</h1>
+        <h1>Your fitness stats</h1>
         <div className="graphs">
           <Bubble
             swimTime={this.props.swimTime}
