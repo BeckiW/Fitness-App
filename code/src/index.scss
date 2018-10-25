@@ -13,7 +13,7 @@ body {
   flex-flow: row nowrap;
   justify-content: space-between;
   margin: 40px 0px;
-  font-size: 20px;
+  font-size: 15px;
   a {
     text-decoration: none;
     color: black;
@@ -22,6 +22,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+  }
+}
+
+.instructions {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  .text {
+    width: 50%;
+  }
+  .gif {
+    width: 50%;
+    max-height: 300px;
+    min-width: 300px;
   }
 }
 
@@ -74,6 +88,18 @@ h2 {
   text-align: center;
 }
 
+h3 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
 .graphs {
   height: auto;
   display: flex;
@@ -88,7 +114,7 @@ h2 {
 
 .calendarContainer {
   height: 400px;
-  margin: 0px auto;
+  margin: 30px auto;
 }
 
 .badgesContainer {

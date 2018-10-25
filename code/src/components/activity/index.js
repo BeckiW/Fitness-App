@@ -39,7 +39,7 @@ class Activity extends React.Component {
             <Link to="/badges">View your badges <i class="fas fa-arrow-right"></i></Link>
           </div>
         </div>
-        <h2>You are playing for {this.club}</h2>
+        <h2>{this.club}</h2>
         <h1>Add a new activity</h1>
         <p>Activity</p>
         <select onChange={event => this.setState({selectedActivity: event.target.value})}>
@@ -54,7 +54,7 @@ class Activity extends React.Component {
         <select onChange={event => this.setState({selectedDuration: event.target.value})}>
           <option>Choose a duration</option>
           {this.props.durationList.map((duration) => {
-            return (<option key={duration} value={duration}>{duration}</option>
+            return (<option key={duration} value={duration}>{duration} hours</option>
             )
           })}
         </select>

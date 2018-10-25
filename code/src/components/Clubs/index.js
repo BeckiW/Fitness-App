@@ -2,8 +2,6 @@ import React from "react"
 import ClubList from "../ClubList"
 import { Link } from 'react-router-dom'
 
-
-
 class Clubs extends React.Component {
 
   constructor(props) {
@@ -73,6 +71,15 @@ class Clubs extends React.Component {
           </div>
         </div>
         <h2>{this.club}</h2>
+        <div className="instructions">
+          <div className="text">
+            <h3>Get active and support your sports club!</h3>
+            <h4>1. Choose your sports club</h4>
+            <h4>2. Add your fitness activities</h4>
+            <h4>3. Earn points for your team! <em>1 minute = 10 points</em></h4>
+          </div>
+          <img className="gif" src="./images/cycling.gif" alt="illustrated cycling animation" />
+        </div>
         <h1>Choose your Club</h1>
         <form>
           <input id="site-search" type="search" placeholder="Search for..." value={this.state.query} onChange={this.queryChange} />
@@ -87,11 +94,6 @@ class Clubs extends React.Component {
              ))}
          </ul>
         <button onClick={this.handleClickLoadMore}> Load More Clubs </button>
-        <div className="instructions">
-          <h3>1. Choose your club</h3>
-          <h3>2. Add your fitness activities</h3>
-          <h3>3. Earn points for your team! 1 minute = 10 points</h3>
-        </div>
       </div>
     )
   }

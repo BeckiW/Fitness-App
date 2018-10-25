@@ -30,27 +30,27 @@ class Badges extends React.Component {
           />
           <Badge
             pointsData={this.props.pointsData}
-            pointsLimit={25}
+            pointsLimit={50}
             source="badge-star"
           />
           <Badge
             pointsData={this.props.pointsData}
-            pointsLimit={50}
+            pointsLimit={100}
             source="badge-diamond"
           />
           <Badge
             pointsData={this.props.pointsData}
-            pointsLimit={100}
+            pointsLimit={200}
             source="badge-medal"
           />
           <Badge
             pointsData={this.props.pointsData}
-            pointsLimit={150}
+            pointsLimit={400}
             source="badge-flag"
           />
           <Badge
             pointsData={this.props.pointsData}
-            pointsLimit={200}
+            pointsLimit={600}
             source="badge-diamond2"
           />
           <Badge
@@ -60,12 +60,12 @@ class Badges extends React.Component {
           />
           <Badge
             pointsData={this.props.pointsData}
-            pointsLimit={750}
+            pointsLimit={1000}
             source="badge-heart2"
           />
           <Badge
             pointsData={this.props.pointsData}
-            pointsLimit={1000}
+            pointsLimit={1500}
             source="badge-trophy2"
           />
         </div>
