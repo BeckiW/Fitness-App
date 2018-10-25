@@ -6,7 +6,7 @@ import ClubList from './ClubList'
 import Activity from "./activity"
 import Stats from "./stats"
 
-const activityList = ["swim", "hike", "gym"];
+const activityList = ["swim", "hike", "gym", "run", "cycle", "other"];
 const durationList = [0.5, 1, 2, 4, 8];
 
 
@@ -20,6 +20,9 @@ class App extends React.Component {
     swimTime: [],
     hikeTime: [],
     gymTime: [],
+    runTime: [],
+    cycleTime: [],
+    otherTime: [],
     streamData: [],
     calendarData: []
   }
@@ -73,7 +76,10 @@ class App extends React.Component {
         "date": loopDate,
         "swim": 0,
         "hike": 0,
-        "gym": 0
+        "gym": 0,
+        "run": 0,
+        "cycle": 0,
+        "other": 0
       }
       let dayActivities = this.state.data.filter((activity) => {
         let activityDate = moment(activity.selectedDate)
@@ -105,6 +111,9 @@ class App extends React.Component {
           "swim": 0,
           "hike": 0,
           "gym": 0,
+          "run": 0,
+          "cycle": 0,
+          "other": 0,
           "total": 0
         }
       }
@@ -129,8 +138,14 @@ class App extends React.Component {
         value = 200;
       } else if ((dayData.gym > 0) && (dayData.gym == dayData.total)) {
         value = 300;
-      } else {
+      } else if ((dayData.run > 0) && (dayData.run == dayData.total)) {
         value = 400;
+      } else if ((dayData.cycle > 0) && (dayData.cycle == dayData.total)) {
+        value = 500;
+      } else if ((dayData.other > 0) && (dayData.other == dayData.total)) {
+        value = 600;
+      } else {
+        value = 700;
       }
 
       let entry = {
@@ -172,6 +187,9 @@ class App extends React.Component {
                     swimTime={this.state.swimTime}
                     hikeTime={this.state.hikeTime}
                     gymTime={this.state.gymTime}
+                    runTime={this.state.runTime}
+                    cycleTime={this.state.cycleTime}
+                    otherTime={this.state.otherTime}
                     streamData={this.state.streamData}
                     />}
                   />

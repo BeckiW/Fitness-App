@@ -25,7 +25,10 @@ console.log(this.club)
         <Bubble
           swimTime={this.props.swimTime}
           hikeTime={this.props.hikeTime}
-          gymTime={this.props.hikeTime} />
+          gymTime={this.props.hikeTime}
+          runTime={this.props.runTime}
+          cycleTime={this.props.cycleTime}
+          otherTime={this.props.otherTime} />
         <Stream streamData={this.props.streamData} />
       </div>
     )

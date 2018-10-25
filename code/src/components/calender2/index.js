@@ -14,12 +14,7 @@ const colors = ['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7'
           from="2018-01-01"
           to="2018-12-31"
           emptyColor="#eeeeee"
-          colors={[
-              "#61cdbb",
-              "#97e3d5",
-              "#e8c1a0",
-              "#f47560"
-          ]}
+          colors={colors}
           margin={{
               "top": 40,
               "right": 0,
@@ -37,9 +32,15 @@ const colors = ['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7'
               return (<p>{data.day}: Hiking</p>)
             } else if ( data.value == 300 ) {
               return (<p>{data.day}: Gym</p>)
+            } else if ( data.value == 400 ) {
+              return (<p>{data.day}: Running</p>)
+            } else if ( data.value == 500 ) {
+              return (<p>{data.day}: Cycling</p>)
+            } else if ( data.value == 600 ) {
+              return (<p>{data.day}: Other</p>)
+            } else {
+              return (<p>{data.day}: Multiple Activities</p>)
             }
-
-            return (<p>{data.day}: Multiple Activities</p>)
           }}
       />
     </div>

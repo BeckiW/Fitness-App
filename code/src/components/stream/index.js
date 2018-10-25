@@ -3,21 +3,31 @@ import { ResponsiveStream } from '@nivo/stream'
 import { patternDotsDef } from '@nivo/core'
 import { generateCountriesData } from '@nivo/generators'
 
+const colors = ['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7', '#97a66f']
+
 const Stream = (props) => (
     <div className="graphBox">
         <ResponsiveStream
             margin={{
-                top: 10,
-                right: 15,
-                bottom: 1.5,
-                left: 1.5,
+                "top": 10,
+                "right": 15,
+                "bottom": 1.5,
+                "left": 1.5,
             }}
             data={props.streamData}
-            keys={['swim', 'hike', 'gym']}
+            keys={["swim", "hike", "gym", "run", "cycle", "other"]}
+            axisLeft={{
+                "orient": "left",
+                "tickSize": 15,
+                "tickPadding": 5,
+                "tickRotation": 0,
+                "legend": "",
+                "legendOffset": -40
+            }}
             offsetType="none"
-            colors={['#96ceb4', '#ffeead', '#ff6f69']}
+            colors={colors}
             enableGridX={false}
-            enableGridY={false}
+            enableGridY={true}
             axisBottom={null}
             isInteractive={true}
             animate={false}
@@ -25,7 +35,6 @@ const Stream = (props) => (
             borderColor="#000000"
             defs={[patternDotsDef('pattern')]}
         />
-        <div className="Title">STREAM</div>
     </div>
 )
 
