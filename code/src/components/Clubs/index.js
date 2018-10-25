@@ -70,7 +70,7 @@ class Clubs extends React.Component {
             <br />
             <Link to="/stats">View stats page <i class="fas fa-arrow-right"></i></Link>
             <br />
-            <Link to="/badges">View your points <i class="fas fa-arrow-right"></i></Link>
+            <Link to="/badges">View your badges <i class="fas fa-arrow-right"></i></Link>
           </div>
         </div>
         <h1>Choose your Club</h1>

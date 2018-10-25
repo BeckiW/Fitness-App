@@ -17,7 +17,7 @@ class Stats extends React.Component {
           <div className="vertical-navigation">
             <Link to="/activity">Add an activity <i class="fas fa-arrow-right"></i></Link>
             <br />
-            <Link to="/badges">View your points <i class="fas fa-arrow-right"></i></Link>
+            <Link to="/badges">View your badges <i class="fas fa-arrow-right"></i></Link>
           </div>
         </div>
         <h2>{this.club}</h2>
