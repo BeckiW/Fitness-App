@@ -42,6 +42,7 @@ class App extends React.Component {
     this.addStreamData()
     this.addCalendarData()
     this.addPointsData()
+    this.addBubbleMonthData()
   }
 
   addEntry = (selectedEntry) => {
@@ -75,22 +76,34 @@ class App extends React.Component {
   }
 
   addBubbleMonthData = () => {
-    for(let i = 0; i < 30; i++) {
-    activityList.forEach((activityType, i) => {
+
+    let filteredData = this.state.data.filter((activity) => {
+
+      let day = moment(activity.selectedDate)
+      let currentDay = moment()
+
+      if (day.isAfter(moment().subtract(30, 'days'))) {
+        return true
+      } else {
+        return false
+      }
+    })
+
+    activityList.forEach((activityType) => {
       let totalTime = 0;
-      if (this.state.data !== null) {
-        this.state.data.forEach((activity) => {
+      if (filteredData !== null) {
+        filteredData.forEach((activity) => {
           if (activity.selectedActivity === activityType) {
             totalTime += parseFloat(activity.selectedDuration);
           }
         })
-        let stateMonthEntry = activityType + "Time";
+        let stateMonthEntry = activityType + "MonthTime";
+
         this.setState({
           [stateMonthEntry]: totalTime
         })
       }
     })
-  }
 }
 
   // setup stream data
@@ -227,6 +240,12 @@ class App extends React.Component {
                     cycleTime={this.state.cycleTime}
                     otherTime={this.state.otherTime}
                     streamData={this.state.streamData}
+                    swimMonthTime={this.state.swimMonthTime}
+                    hikeMonthTime={this.state.hikeMonthTime}
+                    gymMonthTime={this.state.gymMonthTime}
+                    runMonthTime={this.state.runMonthTime}
+                    cycleMonthTime={this.state.cycleMonthTime}
+                    otherMonthTime={this.state.otherMonthTime}
                     />}
                   />
               <Route path="/badges"

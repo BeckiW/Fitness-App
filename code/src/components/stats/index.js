@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from 'react-router-dom'
 import Bubble from "../Bubbles"
 import Stream from '../stream'
+import BubbleMonth from "../BubbleMonth"
 
 class Stats extends React.Component {
 
