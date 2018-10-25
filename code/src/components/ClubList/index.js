@@ -14,7 +14,7 @@ class ClubList extends React.Component {
       localStorage.removeItem("Club id")
       localStorage.setItem("Club id", this.props.name);
     }
-    alert(this.props.name);
+     window.location.assign('/activity');
   }
 
 

@@ -22,6 +22,12 @@ class App extends React.Component {
     runTime: [],
     cycleTime: [],
     otherTime: [],
+    swimMonthTime: [],
+    hikeMonthTime: [],
+    gymMonthTime: [],
+    runMonthTime: [],
+    cycleMonthTime: [],
+    otherMonthTime: [],
     streamData: [],
     calendarData: [],
     pointsData: 0
@@ -67,6 +73,25 @@ class App extends React.Component {
       }
     })
   }
+
+  addBubbleMonthData = () => {
+    for(let i = 0; i < 30; i++) {
+    activityList.forEach((activityType, i) => {
+      let totalTime = 0;
+      if (this.state.data !== null) {
+        this.state.data.forEach((activity) => {
+          if (activity.selectedActivity === activityType) {
+            totalTime += parseFloat(activity.selectedDuration);
+          }
+        })
+        let stateMonthEntry = activityType + "Time";
+        this.setState({
+          [stateMonthEntry]: totalTime
+        })
+      }
+    })
+  }
+}
 
   // setup stream data
   addStreamData = () => {
