@@ -2,7 +2,7 @@
 
 body {
   margin: 20px auto;
-  width: 50%;
+  width: 60%;
   padding: 0;
   font-family: 'Lato', sans-serif;
   font-weight: 600;
@@ -17,6 +17,11 @@ body {
   a {
     text-decoration: none;
     color: black;
+  }
+  .vertical-navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 }
 
@@ -35,6 +40,41 @@ h2 {
   text-align: center;
 }
 
+.graphs {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
 .graphBox {
   height: 400px;
+  width: 450px;
+}
+
+.calendarContainer {
+  width: 900px;
+  height: 400px;
+  margin: 0px auto;
+}
+
+.badgesContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  .badge {
+    width: 30%;
+    min-width: 200px;
+    padding: 10px;
+    filter: grayscale(100%);
+    img {
+      width: 100%;
+    }
+    .completed {
+      filter: grayscale(0%);
+    }
+  }
 }

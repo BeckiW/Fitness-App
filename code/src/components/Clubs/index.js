@@ -64,9 +64,14 @@ class Clubs extends React.Component {
     return (
       <div>
         <div className="navigation">
-          <Link to="/activity"><i class="fas fa-arrow-left"></i> Add an activity</Link>
           <br />
-          <Link to="/stats">View stats page <i class="fas fa-arrow-right"></i></Link>
+          <div className="vertical-navigation">
+            <Link to="/activity">Add an activity <i class="fas fa-arrow-right"></i></Link>
+            <br />
+            <Link to="/stats">View stats page <i class="fas fa-arrow-right"></i></Link>
+            <br />
+            <Link to="/badges">View your points <i class="fas fa-arrow-right"></i></Link>
+          </div>
         </div>
         <h1>Choose your Club</h1>
       <form>
