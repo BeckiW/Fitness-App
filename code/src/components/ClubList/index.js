@@ -20,13 +20,10 @@ class ClubList extends React.Component {
 
   render() {
     return (
-      <div>
-        <tr class="table">
-        <td class="box"><a onClick={this.onClickHandler} style={{"cursor":"pointer"}}>{this.props.name}</a></td>
-        <td>{this.props.city}</td>
-        </tr>
-
-        </div>
+      <li className="club-list-item" onClick={this.onClickHandler}>
+        <span className="club-list-name">{this.props.name}</span>
+        <span className="club-list-city">{this.props.city}</span>
+      </li>
     )
   }
 }

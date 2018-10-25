@@ -78,9 +78,7 @@ class Clubs extends React.Component {
       <input id="site-search" type="search" placeholder="Search for..." value={this.state.query} onChange={this.queryChange} />
       <input type="submit" value="Search" onClick={this.handleClick} />
            </form>
-
-
-           <ul>
+           <ul className="club-list">
                    {slicedClubs.map(club => (
                      <ClubList
                        id={club.id}

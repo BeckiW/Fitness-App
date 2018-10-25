@@ -9,8 +9,8 @@ const Stream = (props) => (
         margin={{
             "top": 10,
             "right": 15,
-            "bottom": 1.5,
-            "left": 1.5,
+            "bottom": 50,
+            "left": 60,
         }}
         data={props.streamData}
         keys={["swim", "hike", "gym", "run", "cycle", "other"]}
@@ -20,8 +20,17 @@ const Stream = (props) => (
             "tickPadding": 5,
             "tickRotation": 0,
             "legend": "",
-            "legendOffset": -40,
+            "legendOffset": -40
         }}
+        axisBottom={{
+          "orient": "bottom",
+          "tickSize": 5,
+          "tickPadding": 5,
+          "tickRotation": 0,
+          "legend": "",
+          "legendOffset": 36
+        }}
+        curve="basis"
         offsetType="none"
         colors={colors}
         enableGridX={false}

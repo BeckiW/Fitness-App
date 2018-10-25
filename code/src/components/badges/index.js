@@ -6,7 +6,7 @@ class Badges extends React.Component {
 
   club = localStorage.getItem("Club id")
 
-  pointsData = 75
+  pointsData = this.props.pointsData
 
   componentWillMount() {
     let styleName1 = ""
@@ -80,7 +80,7 @@ class Badges extends React.Component {
         </div>
         <h2>{this.club}</h2>
         <h1>Your points and badges</h1>
-        <p>Great job! You've earned {this.pointsData} points for {this.club} so far!</p>
+        <p>Great job! You have earned {this.props.pointsData} points for {this.club} so far!</p>
         <div className="badgesContainer">
           <div className={this.styleName1} >
             <img src="./images/badge-heart.jpg" alt="heart-badge" />

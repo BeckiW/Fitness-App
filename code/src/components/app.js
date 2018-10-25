@@ -24,7 +24,7 @@ class App extends React.Component {
     otherTime: [],
     streamData: [],
     calendarData: [],
-    pointsData: {}
+    pointsData: 0
   }
 
   componentDidMount() {
@@ -166,51 +166,14 @@ class App extends React.Component {
 
   addPointsData = () => {
 
-    let activitiesByDay = {}
+    let totalHours = 0;
 
-    // Go over all activities and figure out how many hours of each activity occured each day
     this.state.data.forEach((activity) => {
-      let day = moment(activity.selectedDate).format("YYYY-MM-DD");
-      let activityType = activity.selectedActivity;
-
-      if (activitiesByDay[day] === undefined) {
-        activitiesByDay[day] = {
-          "swim": 0,
-          "hike": 0,
-          "gym": 0,
-          "total": 0
-        }
-      }
-
-      activitiesByDay[day][activityType] += parseFloat(activity.selectedDuration);
-      activitiesByDay[day]["total"] += parseFloat(activity.selectedDuration);
-    })
-
-    console.log('hello ' + activitiesByDay)
-
-    // Go over all of the dates and figure out the colour of that square
-    let pointsData = {}
-    let days = Object.keys(activitiesByDay)
-    let duration = 0;
-    let points = 0;
-
-    days.forEach((day) => {
-      let dayData = activitiesByDay[day]
-
-      duration += dayData.total
-      points = duration *10;
-
-      let entry = {
-        club: localStorage.getItem("Club id"),
-        points: points
-      }
-
-      pointsData = entry;
-
+      totalHours += parseFloat(activity.selectedDuration);
     })
 
     this.setState({
-      pointsData
+      pointsData: (totalHours * 10)
     })
 }
 

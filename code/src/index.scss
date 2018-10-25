@@ -25,6 +25,40 @@ body {
   }
 }
 
+.club-list {
+  list-style-type: none;
+  margin: 20px 0px 10px 0px;
+  padding: 0px;
+}
+
+.club-list-item {
+  border: solid 1px #ccc;
+  background-color: #eee;
+  padding: 4px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+body .club-list-item:hover {
+  background-color: #ddd;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+}
+
+.club-list-item:nth-child(2n) {
+  background-color: #f6f6f6;
+}
+
+.club-list-name {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.club-list-city {
+  color: #555;
+  font-style: italic;
+}
+
 h1 {
   font-size: 30px;
   border-bottom: 4px solid #ff6f69;
@@ -41,7 +75,6 @@ h2 {
 }
 
 .graphs {
-  width: 80%;
   height: auto;
   display: flex;
   flex-flow: row wrap;
@@ -50,11 +83,10 @@ h2 {
 
 .graphBox {
   height: 400px;
-  width: 450px;
+  width: 100%;
 }
 
 .calendarContainer {
-  width: 900px;
   height: 400px;
   margin: 0px auto;
 }
@@ -65,6 +97,7 @@ h2 {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+
   .badge {
     width: 25%;
     min-width: 200px;
