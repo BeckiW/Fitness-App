@@ -6,7 +6,7 @@ import ClubList from './ClubList'
 import Activity from "./activity"
 import Badges from './badges'
 import Stats from "./stats"
-import GamePage from "./GamePage"
+
 
 const activityList = ["swim", "hike", "gym", "run", "cycle", "other"];
 const durationList = [0.5, 1, 2, 4, 8];
@@ -243,7 +243,7 @@ class App extends React.Component {
                   />
               <Route path="/badges"
                 render={(props) => <Badges {...props}
-                  //pointsData={this.state.pointsData}
+                  pointsData={this.state.pointsData}
                   />}
                 />
             </Switch>
