@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import ClubList from './ClubList'
 import Activity from "./activity"
 import Stats from "./stats"
+import GamePage from "./GamePage"
 
 const activityList = ["swim", "hike", "gym"];
 const durationList = [0.5, 1, 2, 4, 8];
@@ -14,14 +15,12 @@ class App extends React.Component {
 
   state = {
     data: localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data")) : [],
-    swimData: [],
-    hikeData: [],
-    gymData: [],
     swimTime: [],
     hikeTime: [],
     gymTime: [],
     streamData: [],
-    calendarData: []
+    calendarData: [],
+    pointsData: {}
   }
 
   componentDidMount() {
@@ -32,6 +31,7 @@ class App extends React.Component {
     this.addBubbleData()
     this.addStreamData()
     this.addCalendarData()
+    this.addPointsData()
   }
 
   addEntry = (selectedEntry) => {
@@ -44,6 +44,7 @@ class App extends React.Component {
       localStorage.setItem("data", JSON.stringify(data))
     }
   }
+
 
   // Setup arrays of activity times
   addBubbleData = () => {
@@ -146,11 +147,56 @@ class App extends React.Component {
     })
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.streamData !== this.state.streamData) {
-  //     this.addCalendarData()
-  //   }
-  // }
+
+  addPointsData = () => {
+
+    let activitiesByDay = {}
+
+    // Go over all activities and figure out how many hours of each activity occured each day
+    this.state.data.forEach((activity) => {
+      let day = moment(activity.selectedDate).format("YYYY-MM-DD");
+      let activityType = activity.selectedActivity;
+
+      if (activitiesByDay[day] === undefined) {
+        activitiesByDay[day] = {
+          "swim": 0,
+          "hike": 0,
+          "gym": 0,
+          "total": 0
+        }
+      }
+
+      activitiesByDay[day][activityType] += parseFloat(activity.selectedDuration);
+      activitiesByDay[day]["total"] += parseFloat(activity.selectedDuration);
+    })
+
+    console.log('hello ' + activitiesByDay)
+
+    // Go over all of the dates and figure out the colour of that square
+    let pointsData = {}
+    let days = Object.keys(activitiesByDay)
+    let duration = 0;
+    let points = 0;
+
+    days.forEach((day) => {
+      let dayData = activitiesByDay[day]
+
+      duration += dayData.total
+      points = duration *10;
+
+      let entry = {
+        club: localStorage.getItem("Club id"),
+        points: points
+      }
+
+      pointsData = entry;
+
+    })
+
+    this.setState({
+      pointsData
+    })
+}
 
   render() {
     return (
@@ -165,6 +211,7 @@ class App extends React.Component {
                   durationList={durationList}
                   calendarData={this.state.calendarData}
                   onClick={this.addEntry}
+
                   />}
               />
                 <Route exact path="/stats"
@@ -175,6 +222,10 @@ class App extends React.Component {
                     streamData={this.state.streamData}
                     />}
                   />
+
+
+                    />
+
               <Route path="/list" component={ClubList}/>
             </Switch>
           </div>
