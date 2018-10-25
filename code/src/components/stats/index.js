@@ -8,6 +8,9 @@ class Stats extends React.Component {
 
   club  = localStorage.getItem("Club id")
 
+
+
+
   render(){
 
     return (
@@ -16,14 +19,17 @@ class Stats extends React.Component {
           <Link to="/"><i class="fas fa-arrow-left"></i> Change your club</Link>
           <br />
           <div className="vertical-navigation">
-            <Link to="/activity">Add an activity <i class="fas fa-arrow-right"></i></Link>
+            <Link to="/activity">Add an activity <i class="fas fa-arrow-right"></i> </Link>
             <br />
             <Link to="/badges">View your badges <i class="fas fa-arrow-right"></i></Link>
           </div>
         </div>
         <h2>{this.club}</h2>
-        <h1>Your fitness stats</h1>
+        <h1>Your exercise stats</h1>
         <div className="graphs">
+
+
+
           <Bubble
             swimTime={this.props.swimTime}
             hikeTime={this.props.hikeTime}
@@ -31,6 +37,8 @@ class Stats extends React.Component {
             runTime={this.props.runTime}
             cycleTime={this.props.cycleTime}
             otherTime={this.props.otherTime} />
+
+
           <Stream streamData={this.props.streamData} />
         </div>
       </div>
