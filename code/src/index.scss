@@ -100,6 +100,14 @@ h4 {
   font-style: italic;
 }
 
+table tr td {
+  padding: 10px;
+}
+
+.activityTable {
+  display: none;
+}
+
 .graphs {
   height: auto;
   display: flex;
@@ -113,7 +121,7 @@ h4 {
 }
 
 .calendarContainer {
-  height: 400px;
+  height: 150px;
   margin: 30px auto;
 }
 

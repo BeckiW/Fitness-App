@@ -9,22 +9,27 @@ class ActivityItem extends React.Component {
   }
 
   // handleClick = () => {
-  //   this.setState({
-  //     selectedActivity: this.props.activity,
-  //     selectedDuration: this.props.duration,
-  //     selectedDate: this.props.date
-  //   }, () => {
-  //     this.props.handleClick(this.state.selectedActivity, this.state.selectedDuration, this.state.selectedDate)
-  //   })
+  //     this.props.handleClick(this.props.selectedActivity, this.props.selectedDuration, this.props.selectedDate)
   // }
 
   data = JSON.parse(localStorage.getItem("data"))
 
   handleClick = () => {
-    let index = this.data.indexOf(this.state)
-    localStorage.removeItem(this.state)
-  }
+    this.setState({
+      selectedActivity: this.props.activity,
+      selectedDuration: this.props.duration,
+      selectedDate: this.props.date
+    }, () => this.updateLocalStorage()
+  )}
 
+  updateLocalStorage = () => {
+    let updatedData = this.data.filter((obj) => {
+      return obj.selectedDate !== this.state.selectedDate;
+    })
+    localStorage.removeItem("data")
+    console.log("updatedData: ", updatedData)
+    localStorage.setItem("data", JSON.stringify(updatedData))
+  }
 
   render() {
     return (

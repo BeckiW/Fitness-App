@@ -1,4 +1,5 @@
 import React from "react"
+import ActivityRemoval from '../activityRemoval'
 import Calender from '../calender2'
 import { Link } from 'react-router-dom'
 import DayPickerInput from 'react-day-picker/DayPickerInput'
@@ -64,6 +65,12 @@ class Activity extends React.Component {
         <button type="button" onClick={this.handleClick}>Add</button>
 
         <Calender calendarData={this.props.calendarData} />
+
+        <ActivityRemoval
+        activity={this.state.selectedActivity}
+        duration={this.state.selectedDuration}
+        date={this.state.selectedDate}
+        />
       </div>
     )
   }
