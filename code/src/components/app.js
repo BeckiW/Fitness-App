@@ -30,7 +30,7 @@ class App extends React.Component {
     otherMonthTime: [],
     streamData: [],
     calendarData: [],
-    pointsData: 0
+    pointsData: [],
   }
 
   componentDidMount() {
@@ -80,7 +80,7 @@ class App extends React.Component {
     let filteredData = this.state.data.filter((activity) => {
 
       let day = moment(activity.selectedDate)
-      let currentDay = moment()
+
 
       if (day.isAfter(moment().subtract(30, 'days'))) {
         return true
@@ -90,17 +90,19 @@ class App extends React.Component {
     })
 
     activityList.forEach((activityType) => {
-      let totalTime = 0;
+      let totalMonthTime = 0;
       if (filteredData !== null) {
         filteredData.forEach((activity) => {
           if (activity.selectedActivity === activityType) {
-            totalTime += parseFloat(activity.selectedDuration);
+            totalMonthTime += parseFloat(activity.selectedDuration);
           }
         })
+
         let stateMonthEntry = activityType + "MonthTime";
 
         this.setState({
-          [stateMonthEntry]: totalTime
+          [stateMonthEntry]: totalMonthTime
+
         })
       }
     })
@@ -133,7 +135,7 @@ class App extends React.Component {
     this.setState({
       streamData
     })
-    console.log('streamData ' + streamData);
+
     }
   }
 
@@ -214,6 +216,7 @@ class App extends React.Component {
       pointsData: (totalHours * 10)
     })
   }
+
 
   render() {
     return (

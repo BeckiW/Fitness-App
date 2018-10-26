@@ -120,6 +120,7 @@ table tr td {
   width: 100%;
 }
 
+
 .calendarContainer {
   height: 150px;
   margin: 30px auto;
@@ -151,3 +152,18 @@ table tr td {
     }
   }
 }
+
+ .closedView {
+
+   display: none;
+ }
+
+ .openView {
+
+ }
+
+ button {
+
+   height: 20px;
+   align-items: center;
+ }
