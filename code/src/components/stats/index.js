@@ -43,23 +43,24 @@ class Stats extends React.Component {
         <div className="graphs">
 
         <div className={this.state.active ? "openView" : "closedView"}>
-
           <BubbleMonth
             swimTime={this.props.swimMonthTime}
             hikeTime={this.props.hikeMonthTime}
-            gymTime={this.props.hikeMonthTime}
+            gymTime={this.props.gymMonthTime}
             runTime={this.props.runMonthTime}
             cycleTime={this.props.cycleMonthTime}
             otherTime={this.props.otherMonthTime} />
 
-      </div>
+        </div>
+
+
 
         <div className={this.state.active ? "closedView" : "openView"}>
 
           <Bubble
             swimTime={this.props.swimTime}
             hikeTime={this.props.hikeTime}
-            gymTime={this.props.hikeTime}
+            gymTime={this.props.gymTime}
             runTime={this.props.runTime}
             cycleTime={this.props.cycleTime}
             otherTime={this.props.otherTime} />

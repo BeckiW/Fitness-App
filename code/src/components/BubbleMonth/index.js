@@ -7,24 +7,24 @@ const colors = ['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7'
 
 const BubbleMonth = (props) => (
 
-    <div className="graphBox bubbleContainer">
+    <div className="graphBox">
     <h2>Your total hours by activity this month </h2>
         <ResponsiveBubble
             root={{
                 data: 'root',
                 children: [
                   {"name": "swim",
-                  "value": props.swimMonthTime},
+                  "value": 4},
                   {"name": "hike",
-                  "value": props.hikeMonthTime},
+                  "value": 6},
                   {"name": "gym",
-                  "value": props.gymMonthTime},
+                  "value": 9},
                   {"name": "run",
-                  "value": props.runMonthTime},
+                  "value": 3},
                   {"name": "cycle",
-                  "value": props.cycleMonthTime},
+                  "value": 1},
                   {"name": "other",
-                  "value": props.otherMonthTime}
+                  "value": 3}
                 ]
             }}
             identity="name"

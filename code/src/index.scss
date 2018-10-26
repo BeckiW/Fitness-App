@@ -112,10 +112,6 @@ h4 {
   width: 100%;
 }
 
-.bubbleContainer {
-  height: 400px;
-  margin: 30px auto;
-}
 
 .calendarContainer {
   height: 400px;
@@ -160,5 +156,6 @@ h4 {
 
  button {
 
-   height: 20px
+   height: 20px;
+   align-items: center;
  }
