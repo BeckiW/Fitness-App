@@ -30,7 +30,7 @@ class App extends React.Component {
     otherMonthTime: [],
     streamData: [],
     calendarData: [],
-    pointsData: [],
+    pointsData: 0,
   }
 
   componentDidMount() {
