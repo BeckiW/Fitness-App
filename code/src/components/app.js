@@ -228,7 +228,7 @@ class App extends React.Component {
                   durationList={durationList}
                   calendarData={this.state.calendarData}
                   onClick={this.addEntry}
-
+                  data={this.state.data}
                   />}
               />
                 <Route exact path="/stats"
