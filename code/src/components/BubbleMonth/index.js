@@ -6,7 +6,9 @@ import { generateCountriesData } from '@nivo/generators'
 const colors = ['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7', '#97a66f']
 
 const BubbleMonth = (props) => (
-    <div className="graphBox">
+
+    <div className="graphBox bubbleContainer">
+    <h2>Your total hours by activity this month </h2>
         <ResponsiveBubble
             root={{
                 data: 'root',

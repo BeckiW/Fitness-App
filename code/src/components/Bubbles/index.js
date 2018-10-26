@@ -7,6 +7,7 @@ const colors = ['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7'
 
 const Bubble = (props) => (
     <div className="graphBox">
+      <h2>Your total hours by activity </h2>
         <ResponsiveBubble
             root={{
                 data: 'root',

@@ -112,6 +112,11 @@ h4 {
   width: 100%;
 }
 
+.bubbleContainer {
+  height: 400px;
+  margin: 30px auto;
+}
+
 .calendarContainer {
   height: 400px;
   margin: 30px auto;
@@ -143,3 +148,17 @@ h4 {
     }
   }
 }
+
+ .closedView {
+
+   display: none;
+ }
+
+ .openView {
+
+ }
+
+ button {
+
+   height: 20px
+ }
