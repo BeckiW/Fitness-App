@@ -14,17 +14,17 @@ const BubbleMonth = (props) => (
                 data: 'root',
                 children: [
                   {"name": "swim",
-                  "value": props.swimMonthTime},
+                  "value": props.swimTime},
                   {"name": "hike",
-                  "value": props.hikeMonthTime},
+                  "value": props.hikeTime},
                   {"name": "gym",
-                  "value": props.gymMonthTime},
+                  "value": props.gymTime},
                   {"name": "run",
-                  "value": props.runMonthTime},
+                  "value": props.runTime},
                   {"name": "cycle",
-                  "value": props.cycleMonthTime},
+                  "value": props.cycleTime},
                   {"name": "other",
-                  "value": props.otherMonthTime}
+                  "value": props.otherTime}
                 ]
             }}
             identity="name"
