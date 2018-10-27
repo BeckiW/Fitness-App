@@ -67,7 +67,7 @@ class Stats extends React.Component {
 
           </div>
 
-        <button onClick={this.toggleClass}>Change view </button>
+         <button onClick={this.toggleClass}>Change view </button>
 
           <Stream streamData={this.props.streamData} />
 

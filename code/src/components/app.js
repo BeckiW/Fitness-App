@@ -22,7 +22,7 @@ class App extends React.Component {
     runTime: [],
     cycleTime: [],
     otherTime: [],
-    swimMonthTime: [],
+    swimMonthTime:[],
     hikeMonthTime: [],
     gymMonthTime: [],
     runMonthTime: [],
@@ -30,7 +30,7 @@ class App extends React.Component {
     otherMonthTime: [],
     streamData: [],
     calendarData: [],
-    pointsData: 0,
+    pointsData: [],
   }
 
   componentDidMount() {
