@@ -6,7 +6,7 @@ import './style.css'
 
 const colors = ['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7', '#97a66f']
 
-  const Calender = (props) => (
+  const Calendar = (props) => (
 
     <div className="calendarContainer">
       <ResponsiveCalendar
@@ -46,4 +46,4 @@ const colors = ['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7'
     </div>
   )
 
-  export default Calender
+  export default Calendar

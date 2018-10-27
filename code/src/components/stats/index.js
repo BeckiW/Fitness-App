@@ -38,8 +38,14 @@ class Stats extends React.Component {
             <Link to="/badges">View your badges <i class="fas fa-arrow-right"></i></Link>
           </div>
         </div>
-        <h2>{this.club}</h2>
+        <h2>You are playing for {this.club}</h2>
         <h1>Your exercise stats</h1>
+
+        <section classname="buttonSection">
+
+           <button onClick={this.toggleClass}>Change view </button>
+
+        </section>
         <div className="graphs">
 
         <div className={this.state.active ? "openView" : "closedView"}>
@@ -67,10 +73,8 @@ class Stats extends React.Component {
 
           </div>
 
-         <button onClick={this.toggleClass}>Change view </button>
 
           <Stream streamData={this.props.streamData} />
-
 
         </div>
       </div>
