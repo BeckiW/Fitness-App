@@ -113,6 +113,7 @@ table tr td {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  padding-bottom: 100px;
 }
 
 .graphBox {
@@ -155,13 +156,15 @@ table tr td {
 
  .closedView {
    display: none;
+   padding-bottom: 20px;
  }
 
  .openView {
-
+   padding-bottom: 20px;
  }
 
- button {
+
+button {
   font-size: 16px;
   padding: 10px 20px;
   border: none;
@@ -170,7 +173,12 @@ table tr td {
   text-transform: uppercase;
   margin-top: 20px;
   border-radius: 20px;
+  text-decoration: none;
  }
+
+button:focus {
+    outline: none;
+}
 
 .buttonSection {
 margin: 0 auto;

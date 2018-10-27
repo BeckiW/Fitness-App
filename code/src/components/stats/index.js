@@ -46,9 +46,9 @@ class Stats extends React.Component {
            <button onClick={this.toggleClass}>Change view </button>
 
         </section>
-        <div className="graphs">
+        <div>
+  <div className={this.state.active ? "closedView" : "openView"}>
 
-        <div className={this.state.active ? "openView" : "closedView"}>
           <BubbleMonth
             swimTime={this.props.swimMonthTime}
             hikeTime={this.props.hikeMonthTime}
@@ -60,8 +60,7 @@ class Stats extends React.Component {
         </div>
 
 
-
-        <div className={this.state.active ? "closedView" : "openView"}>
+        <div className={this.state.active ? "openView" : "closedView"}>
 
           <Bubble
             swimTime={this.props.swimTime}

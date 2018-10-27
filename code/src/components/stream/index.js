@@ -6,7 +6,7 @@ const colors = ['#fae04d', '#ff744c', '#789792', '#b1646a', '#efa9a1', '#8470c7'
 const Stream = (props) => (
     <div className="graphBox">
 
-      <h2>Your activities over time </h2>
+      <h2>Your activities this month over time </h2>
     <ResponsiveStream
         margin={{
             "top": 10,
