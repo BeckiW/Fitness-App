@@ -56,6 +56,22 @@ class App extends React.Component {
     }
   }
 
+  // update local storage when user removes activity and then update all other components that use the data
+  removeEntry = (selectedDate, selectedActivity, selectedDuration) => {
+    let indexOfActivityToRemove = this.state.data.findIndex(x =>
+      x.selectedDate === selectedDate &&
+      x.selectedActivity === selectedActivity &&
+      x.selectedDuration === selectedDuration
+    )
+    console.log("index: ", indexOfActivityToRemove)
+    let updatedData = this.state.data
+    updatedData.splice(indexOfActivityToRemove, 1)
+    localStorage.removeItem("data")
+    localStorage.setItem("data", JSON.stringify(updatedData))
+    this.setState({
+      data: updatedData
+    }, () => this.updateData())
+  }
 
   // Setup arrays of activity times
   addBubbleData = () => {
@@ -232,6 +248,7 @@ class App extends React.Component {
                   calendarData={this.state.calendarData}
                   onClick={this.addEntry}
                   data={this.state.data}
+                  handleClick={this.removeEntry}
                   />}
               />
                 <Route exact path="/stats"
