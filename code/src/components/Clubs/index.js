@@ -1,5 +1,5 @@
 import React from "react"
-import ClubList from "../ClubList"
+import ClubList from "../clubList"
 import { Link } from 'react-router-dom'
 
 class Clubs extends React.Component {

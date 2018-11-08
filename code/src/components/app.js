@@ -1,8 +1,8 @@
 import React from 'react'
 import moment from 'moment'
-import Clubs from './Clubs'
+import Clubs from './clubs'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import ClubList from './ClubList'
+import ClubList from './clubList'
 import Activity from "./activity"
 import Badges from './badges'
 import Stats from "./stats"

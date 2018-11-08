@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from 'react-router-dom'
-import Bubble from "../Bubbles"
+import Bubble from "../bubbles"
 import Stream from '../stream'
-import BubbleMonth from "../BubbleMonth"
+import BubbleMonth from "../bubbleMonth"
 
 class Stats extends React.Component {
 
@@ -47,7 +47,7 @@ class Stats extends React.Component {
 
         </section>
         <div>
-  <div className={this.state.active ? "closedView" : "openView"}>
+      <div className={this.state.active ? "closedView" : "openView"}>
 
           <BubbleMonth
             swimTime={this.props.swimMonthTime}
@@ -59,8 +59,7 @@ class Stats extends React.Component {
 
         </div>
 
-
-        <div className={this.state.active ? "openView" : "closedView"}>
+      <div className={this.state.active ? "openView" : "closedView"}>
 
           <Bubble
             swimTime={this.props.swimTime}
@@ -71,7 +70,6 @@ class Stats extends React.Component {
             otherTime={this.props.otherTime} />
 
           </div>
-
 
           <Stream streamData={this.props.streamData} />
 

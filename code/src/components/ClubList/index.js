@@ -1,5 +1,4 @@
 import React from "react"
-import Bubble from '../Bubbles'
 
 class ClubList extends React.Component {
 
