@@ -22,12 +22,12 @@ class Activity extends React.Component {
       })
     }
 
-    onClick = () => {
-      this.props.onClick(this.state)
+    handleAddEntry = () => {
+      this.props.handleAddEntry(this.state)
     }
 
-    handleClick = (selectedDate, selectedActivity, selectedDuration) => {
-      this.props.handleClick(selectedDate, selectedActivity, selectedDuration)
+    handleRemoveEntry = (selectedDate, selectedActivity, selectedDuration) => {
+      this.props.handleRemoveEntry(selectedDate, selectedActivity, selectedDuration)
     }
 
     club = localStorage.getItem("Club id")
@@ -66,7 +66,7 @@ class Activity extends React.Component {
 
         <p>Date</p>
         <DayPickerInput onDayChange={day => this.addEntry(day)} />
-        <button type="button" onClick={this.onClick}>Add</button>
+        <button type="button" onClick={this.handleAddEntry}>Add</button>
 
         <Calendar calendarData={this.props.calendarData} />
 
@@ -74,7 +74,7 @@ class Activity extends React.Component {
           activity={this.state.selectedActivity}
           duration={this.state.selectedDuration}
           date={this.state.selectedDate}
-          handleClick={this.handleClick}
+          handleClick={this.handleRemoveEntry}
           data={this.props.data}
         />
       </div>

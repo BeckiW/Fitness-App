@@ -92,11 +92,8 @@ class App extends React.Component {
   }
 
   addBubbleMonthData = () => {
-
     let filteredData = this.state.data.filter((activity) => {
-
       let day = moment(activity.selectedDate)
-
 
       if (day.isAfter(moment().subtract(30, 'days'))) {
         return true
@@ -128,29 +125,29 @@ class App extends React.Component {
   addStreamData = () => {
     let streamData = []
     if (this.state.data !== null) {
-    for(let daysAgo = 30; daysAgo >= 0; --daysAgo) {
-      let loopDate = moment().subtract('days', daysAgo)
-      let entry = {
-        "date": loopDate,
-        "swim": 0,
-        "hike": 0,
-        "gym": 0,
-        "run": 0,
-        "cycle": 0,
-        "other": 0
+      for(let daysAgo = 30; daysAgo >= 0; --daysAgo) {
+        let loopDate = moment().subtract('days', daysAgo)
+        let entry = {
+          "date": loopDate,
+          "swim": 0,
+          "hike": 0,
+          "gym": 0,
+          "run": 0,
+          "cycle": 0,
+          "other": 0
+        }
+        let dayActivities = this.state.data.filter((activity) => {
+          let activityDate = moment(activity.selectedDate)
+          return activityDate.isSame(loopDate, 'day');
+        })
+        dayActivities.forEach((activity) => {
+          entry[activity.selectedActivity] += parseFloat(activity.selectedDuration);
+        })
+        streamData.push(entry)
       }
-      let dayActivities = this.state.data.filter((activity) => {
-        let activityDate = moment(activity.selectedDate)
-        return activityDate.isSame(loopDate, 'day');
+      this.setState({
+        streamData
       })
-      dayActivities.forEach((activity) => {
-        entry[activity.selectedActivity] += parseFloat(activity.selectedDuration);
-      })
-      streamData.push(entry)
-    }
-    this.setState({
-      streamData
-    })
 
     }
   }
@@ -246,9 +243,9 @@ class App extends React.Component {
                   activityList={activityList}
                   durationList={durationList}
                   calendarData={this.state.calendarData}
-                  onClick={this.addEntry}
+                  handleAddEntry={this.addEntry}
                   data={this.state.data}
-                  handleClick={this.removeEntry}
+                  handleRemoveEntry={this.removeEntry}
                   />}
               />
                 <Route exact path="/stats"
